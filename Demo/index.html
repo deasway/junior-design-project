@@ -6,54 +6,49 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>SDPHomepage</title>
         <meta name="description" content="SDP proof of concept prototype">
-        <link rel="stylesheet" href="css/main.css">
+        <!--<link rel="stylesheet" href="css/searchstuff.css">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <body>
         
         <! Nav bar with dummy links>
-        <ul>
-          <li><p>Space Dinosaur Project</p></li>
-          <li><a href="index.html">Search</a></li>
-          <li><a href="index.html">Map</a></li>
-        </ul>
-        
-        <div class=search-elements>
-            
-            <h2 class="search-bar-title">
-            Amplitude Graph Term Search
-            </h2>
-        
-            <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-                <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-11" viewBox="0 0 40 40">
-                <path d="M15.553 31.106c8.59 0 15.553-6.963 15.553-15.553S24.143 0 15.553 0 0 6.963 0 15.553s6.963 15.553 15.553 15.553zm0-3.888c6.443 0 11.665-5.222 11.665-11.665 0-6.442-5.222-11.665-11.665-11.665-6.442 0-11.665 5.223-11.665 11.665 0 6.443 5.223 11.665 11.665 11.665zM27.76 31.06c-.78-.78-.778-2.05.004-2.833l.463-.463c.783-.783 2.057-.78 2.834-.003l8.168 8.17c.782.78.78 2.05-.003 2.832l-.463.463c-.783.783-2.057.78-2.833.003l-8.17-8.167z"
-                fill-rule="evenodd" />
-                </symbol>
-                <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-clear-3" viewBox="0 0 20 20">
-                <path d="M8.114 10L.944 2.83 0 1.885 1.886 0l.943.943L10 8.113l7.17-7.17.944-.943L20 1.886l-.943.943-7.17 7.17 7.17 7.17.943.944L18.114 20l-.943-.943-7.17-7.17-7.17 7.17-.944.943L0 18.114l.943-.943L8.113 10z" fill-rule="evenodd" />
-                </symbol>
-            </svg>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Space Dinosaur Project</a>
+                </div>
 
-            <form novalidate="novalidate" class="searchbox sbx-custom" action="graph.html">
-              <div role="search" class="sbx-google__wrapper">
-                <input type="search" name="search" placeholder="Search a Term" autocomplete="off" required="required" class="sbx-custom__input">
-                <button type="submit" title="Submit your search query." class="sbx-custom__submit">
-                  <svg role="img" aria-label="Search">
-                    <use xlink:href="#sbx-icon-search-11"></use>
-                  </svg>
-                </button>
-                <button type="reset" title="Clear the search query." class="sbx-custom__reset">
-                  <svg role="img" aria-label="Reset">
-                    <use xlink:href="#sbx-icon-clear-3"></use>
-                  </svg>
-                </button>
-              </div>
-            </form>
-            <script type="text/javascript">
-                document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {  this.parentNode.querySelector('input').focus();});
-               
-            </script>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                        <li><a href="search.html">Search</a></li>
+                        <li><a href="map.html">Map</a></li>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+        <div class="jumbotron" style="text-align: center">
+            <h1 class="display-4">Space Dinosaur Project</h1>
+            <p class="lead">
+                In a recent interview Georgia Tech's Ayanna Howard credits The Bionic Woman as inspiring her initial forays into the world of robotics. iRobot founder and former head of the MIT AI Laboratory, Rodney Brooks, credits 2001 A Space Odyssey for sparking his interest in machine learning. Fang Zhang's prize-winning work on CRISPR was born out of a fascination with Jurassic Park as a child. There is no doubt that science fiction has inspired some of the brightest minds of the twenty-first century, and there is evidence linking the relationship between science fiction and STEM littered across biographies, interviews, and articles all over the internet.
+            </p>
+            <hr class="my-4">
+            <p>
+                This project will seek to use web scraping to parse various science databases for references to science fiction works, concepts, and authors that have influenced modern technologies. This archive will then be used to produce statistical models that demonstrate how the world of speculative science fiction and modern scientific thought are hardwired at the most basic levels.            </p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="search.html" role="button">Search for a Term</a>
+                <a class="btn btn-primary btn-lg" href="map.html" role="button">Amplitude Map</a>
+            </p>
         </div>
-       
     </body>
 </html>
 
