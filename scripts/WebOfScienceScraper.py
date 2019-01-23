@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[142]:
+# In[89]:
 
 
 import re
@@ -16,18 +16,18 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 
-# In[216]:
+# In[90]:
 
 
 url = "http://apps.webofknowledge.com.prx.library.gatech.edu/UA_GeneralSearch_input.do?product=UA&SID=5Bmu1zxN36Unjxtugwz&search_mode=GeneralSearch"
 #Enter your gatech credentials here.
 #I've got it so that it actually opens up a browser and shows you what it's doing
 #Also bc I can't get 2FA to work yet automatically
-username = "---"
-password = "---"
+username = "USERNAME_HERE"
+password = "PASSWORD_HERE"
 
 
-# In[242]:
+# In[91]:
 
 
 def scraperMain(browser):
@@ -53,17 +53,36 @@ def scraperMain(browser):
     temp = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id=\"value(input1)\"]")))
     print("WOS loaded.")
     
+    words_dict = open_csv("braveNewWords.csv")
+    
     try:
-        #TODO: Populate database with braveNewWords.csv words
-        #(Easy, just a big loop)
-        searchTerm(browser, "Robot")
-        time.sleep(20)
+        #Words_correlated is a list filled with 5-tuples
+        #The 5-tuple has the structure:
+        #(Word, year it entered lexicon, total # of hits in WOS,
+        #dict for publishing year distribution,
+        #dict for domain distribution)
+        words_correlated = []
+        for word, year in words_dict.items():
+            hits, year_dict, domain_dict = searchTerm(browser, word)
+            f_tuple = (word, year, hits, year_dict, domain_dict)
+            words_correlated.append(f_tuple)
+            if hits:
+                print(f_tuple)
+            
+            #return to main search screen
+            browser.get(url)
+            wait = WebDriverWait(browser, 42)
+            temp = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id=\"value(input1)\"]")))
+            
         browser.quit()
-    except:
+        
+        #print(words_correlated)
+    except Exception as e:
+        print(e)
         browser.quit()
 
 
-# In[243]:
+# In[92]:
 
 
 def searchTerm(driver, string):
@@ -81,24 +100,25 @@ def searchTerm(driver, string):
     search_bar.send_keys(Keys.ENTER)
     time.sleep(4)
     
-    raw_hit_count_element = browser.find_element_by_id("hitCount.top")
-    raw_hit_count = raw_hit_count_element.text
-    
-    try:
+    try:    
+        raw_hit_count_element = browser.find_element_by_id("hitCount.top")
+        raw_hit_count = raw_hit_count_element.text
+        
         year_stats_link = driver.find_element_by_class_name("link-style1")
         year_stats_link.click()
         time.sleep(2)
         
         year_stats_dict, domains_stats_dict = detailsHarvest(browser)
-        print(year_stats_dict)
+        #print(year_stats_dict)
         return raw_hit_count, year_stats_dict, domains_stats_dict
         
     except:
         #TODO: Handle this case
-        print("No/minimal stats on publication years.")
+        print("No/minimal stats on publication years for word " + string)
+        return None, None, None
 
 
-# In[244]:
+# In[93]:
 
 
 def yearRegex(string):
@@ -129,7 +149,7 @@ def domainsSplitter(string):
     #TODO
 
 
-# In[245]:
+# In[94]:
 
 
 def detailsHarvest(driver):
@@ -145,7 +165,20 @@ def detailsHarvest(driver):
     return year_stats_dict, domains_stats_dict
 
 
-# In[246]:
+# In[95]:
+
+
+def open_csv(file):
+    words_dict = {}
+    with open(file, "r", encoding = "utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if len(row):
+                words_dict[row[0]] = row[1]
+    return words_dict
+
+
+# In[96]:
 
 
 browser = webdriver.Chrome()
@@ -154,7 +187,7 @@ browser.get(url)
 scraperMain(browser)
 
 
-# In[248]:
+# In[97]:
 
 
 browser.quit()
