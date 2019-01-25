@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[89]:
+# In[76]:
 
 
 import re
@@ -14,20 +14,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import json
 
 
-# In[90]:
+# In[77]:
 
 
 url = "http://apps.webofknowledge.com.prx.library.gatech.edu/UA_GeneralSearch_input.do?product=UA&SID=5Bmu1zxN36Unjxtugwz&search_mode=GeneralSearch"
 #Enter your gatech credentials here.
 #I've got it so that it actually opens up a browser and shows you what it's doing
 #Also bc I can't get 2FA to work yet automatically
-username = "USERNAME_HERE"
-password = "PASSWORD_HERE"
+username = "---"
+password = "---"
 
 
-# In[91]:
+# In[78]:
 
 
 def scraperMain(browser):
@@ -75,14 +76,16 @@ def scraperMain(browser):
             temp = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id=\"value(input1)\"]")))
             
         browser.quit()
-        
+        return words_correlated
         #print(words_correlated)
     except Exception as e:
         print(e)
         browser.quit()
+        print("Not all possible data may have been collected.")
+        return words_correlated
 
 
-# In[92]:
+# In[79]:
 
 
 def searchTerm(driver, string):
@@ -93,8 +96,11 @@ def searchTerm(driver, string):
     search_bar.click()
     
     #clearing bar
-    ActionChains(driver).key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
-    search_bar.send_keys(Keys.DELETE)
+    try:
+        search_bar.clear()
+    except:
+        ActionChains(driver).key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
+        search_bar.send_keys(Keys.DELETE)
     
     search_bar.send_keys(string)
     search_bar.send_keys(Keys.ENTER)
@@ -109,16 +115,17 @@ def searchTerm(driver, string):
         time.sleep(2)
         
         year_stats_dict, domains_stats_dict = detailsHarvest(browser)
-        #print(year_stats_dict)
+        #print(domains_stats_dict)
         return raw_hit_count, year_stats_dict, domains_stats_dict
         
-    except:
+    except Exception as e:
         #TODO: Handle this case
         print("No/minimal stats on publication years for word " + string)
+        print(e)
         return None, None, None
 
 
-# In[93]:
+# In[80]:
 
 
 def yearRegex(string):
@@ -138,34 +145,57 @@ def yearSplitter(string):
     numMatch = numPattern.search(string)
     number = str(numMatch.group())
     number = re.sub("(\(|\)|,)", "", number)
+    
     return year, number
 
 def domainsRegex(string):
+    domainsPattern = re.compile("[A-Z]+ *\(")
+    domain = domainsPattern.search(string)
+    if domain:
+        return domain.group()
     return None
     #TODO
     
 def domainsSplitter(string):
-    return None
+    domainsPattern = re.compile("[A-Z ]* *\(")
+    domainsMatch = domainsPattern.search(string)
+    domain = str(domainsMatch.group())
+    domain = re.sub(" \(", "", domain)
+    
+    numPattern = re.compile("\(.*\)")
+    numMatch = numPattern.search(string)
+    number = str(numMatch.group())
+    number = re.sub("(\(|\)|,)", "", number)
+    
+    return domain, number
     #TODO
 
 
-# In[94]:
+# In[81]:
 
 
 def detailsHarvest(driver):
     year_stats_elements = driver.find_elements_by_tag_name("label")
+    domain_stats_elements = driver.find_elements_by_class_name("ra-summary-text")
     year_stats_dict = {}
     domains_stats_dict = {}
+    
     for e in year_stats_elements:
         element_text = e.text
         if yearRegex(element_text):
             e1, e2 = yearSplitter(element_text)
             year_stats_dict[e1] = e2
-        #TODO domains parsing
+    
+    for e in domain_stats_elements:
+        element_text = e.text
+        if domainsRegex(element_text):
+            e1, e2 = domainsSplitter(element_text)
+            domains_stats_dict[e1] = e2
+    
     return year_stats_dict, domains_stats_dict
 
 
-# In[95]:
+# In[82]:
 
 
 def open_csv(file):
@@ -178,16 +208,19 @@ def open_csv(file):
     return words_dict
 
 
-# In[96]:
+# In[83]:
 
 
 browser = webdriver.Chrome()
 browser.get(url)
 
-scraperMain(browser)
+data_list = scraperMain(browser)
+
+with open('data.json', 'w') as f:
+    json.dump(data_list, f)
 
 
-# In[97]:
+# In[74]:
 
 
 browser.quit()
