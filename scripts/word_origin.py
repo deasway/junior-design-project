@@ -4,6 +4,7 @@ import urllib.request
 import re
 import csv
 import requests
+import time
 
 def search_both(term):
     search_mw_term(term)
@@ -70,20 +71,49 @@ def search_k_terms(k):
 
             flag+= 1
 
+def search_all_terms():
+    with open("word_bank.csv", "r") as f, open("word_origin.csv", "w") as d:
+        reader = csv.reader(f)
+        writer = csv.writer(d)
+        for row in reader:
+            print("Word data for " + row[0] + "---------------------------")
+            query = row[0].strip().replace(" ", "+").lower()
+            url = "https://dictionaryapi.com/api/v3/references/collegiate/json/"+query+"?key="+mw_key
+            response = urllib.request.urlopen(url)
+            data = json.load(response)
+            mw = ""
+            try:
+                mw = data[0]['date']
+            except:
+                mw = "X"
+
+            query = row[0].strip().replace(" ", "_").replace("-", "_").lower()
+            url = url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/en/' + query
+            r = requests.get(url, headers = {'app_id': oxford_app_id, 'app_key': oxford_key})
+            ox = ""
+            try:
+                # print("code {}\n".format(r.status_code))
+                # print("text \n" + r.text)
+                ox =r.json()["results"][0]["lexicalEntries"][0]["entries"][0]["etymologies"][0]
+                # print("json \n" + json.dumps(r.json()))
+            except:
+                ox = "X"
+
+            print("\n\n")
+            writer.writerow([row[0], mw, ox])
+            time.sleep(5)
+
+
+
 
 #API KEYS. REMOVE BEFORE PUSHING TO GITHUB-----------------
-mw_key = "a"
-oxford_app_id = "b"
-oxford_key = "c"
+mw_key = "3d4e9983-e73b-4cb3-bee3-5805e02458f1"
+oxford_app_id = "6f14dd69"
+oxford_key = "14ae09e67159519302fdab124cade1ea"
 #----------------------------------------------------------------------------
 
 
-
-search_both("aerocar")
-print("\n\n")
-search_both("space cadet")
-print("\n\n")
-search_both("vibroknife")
+search_both("hard-core science")
 
 
 
