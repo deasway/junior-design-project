@@ -72,7 +72,7 @@ def search_k_terms(k):
             flag+= 1
 
 def search_all_terms():
-    with open("word_bank.csv", "r") as f, open("word_origin.csv", "w") as d:
+    with open("braveNewWords.csv", "r") as f, open("word_origin.csv", "w") as d:
         reader = csv.reader(f)
         writer = csv.writer(d)
         for row in reader:
@@ -112,8 +112,7 @@ oxford_app_id = "6f14dd69"
 oxford_key = "14ae09e67159519302fdab124cade1ea"
 #----------------------------------------------------------------------------
 
-
-search_both("hard-core science")
+search_all_terms()
 
 
 
