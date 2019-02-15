@@ -1,529 +1,809 @@
-aerocar,1900
-AI,1973
-air-car,1829
-alien,1919
-alternate future,1941
-alternate reality,1950
-alternate universe,1950
-alternate world,1944
-alternative future,1939
-alternative history,1977
-alternative reality,1941
-alternative universe,1944
-alternative world,1943
-antigrav,1941
-anti-gravitational,1900
-antispinward,1970
-anywhen,1941
-apazine,1944
-artificial gravity,1930
-artificial intelligence,1973
-astrogate,1941
-astrogation,1931
-astrogational,1941
-astrogator,1935
-astronavigation,1935
-astronavigator,1941
-atomics,1932
-avian,1930
-BDO,1993
-beam,1951
-beam-me-up (Scotty),1988
-beanstalk,1979
-belter,1966
-BEM,1939
-blaster,1925
-blast off,1944
-blowup,1945
-BNF,1950
-bot,1969
-braintape,1979
-Buck Rogers,1946
-bug-eyed monster,1939
-chrononaut,1963
-Clarke's Third Law,1968
-cloaking device,1968
-clubzine,1969
-COA,1961
-cold sleep,1956
-cold sleeper,1992
-collapsium,1963
-comlink,1976
-completist,1944
--con,1940
-congoer,1960
-conreport,1953
-continuum,1946
-contraterrene,1941
-corpsesicle,1966
-counter-gravity,1951
-credit,1934
-crudzine,1975
-cryostasis,1975
-cyberpunkish,1989
-cyborg,1976
-cyborged,1976
-cyborging,1978
-cyborgisation,1994
-cyborgised,1989
-dayside,1914
-death ray,1915
-deep space,1934
-different story,1928
-dimensional,1928
-dirtside,1953
-dirtsider,1992
-disintegrator,1925
-disruptor,1931
-doomwatch,1970
-doomwatcher,1971
-doubleplusungood,1949
-doublethink,1949
-downtime,1973
-droid,1976
-dystopian,1953
-dystopic,1967
-Earthborn,1900
-Earther,1952
-Earthfall,1957
-Earthfolk,1914
-Earthian,1934
-Earthnorm,1951
-Earth-normal,1942
-Earthside,1948
-Earthsider,1993
-Earth-type,1941
-eetee,1956
-elsewhen,1982
-empath,1956
-empathic,1959
-empathy,1955
-energy screen,1944
-energy weapon,1941
-esper,1950
-ET,1944
-everywhen,1955
-exoskeleton,1968
-Expletives & Profanity,1960
-extra-dimensional,1934
-extra-planetary,1931
-extraterrestrial,1941
-fakefan,1939
-fanfic,1976
-fanmag,1937
-fanning,1948
-fannish,1944
-fannishness,1959
-fanspeak,1952
-fantastic,1931
-faster-than-light,1947
-faster than light,1912
-feelie,1931
-fen,1943
-filk,1978
-filker,1982
-filking,1981
-filksing,1972
-first contact,1935
-flame pistol,1932
-flash crowd,1971
-flitter,1941
-floater,1935
-free fall,1931
-fresher,1940
-FTL,1958
-fugghead,1950
-fuggheadedness,1949
-gafiate,1959
-galactic,1942
-galaxy-wide,1940
-gas giant,1952
-gateway,1933
-genetic engineer,1954
-genetic engineering,1951
-genre,1993
-genzine,1966
-glassite,1934
-go nova,1942
-go supernova,1942
-grav,1940
-gravitic,1939
-gravitics,1944
-gravity drive,1950
-gravity-free,1931
-gravityless,1939
-gravity plate,1933
-gravity screen,1928
-gravs,1940
-grok,1961
-groundside,1961
-group mind,1930
-hard‐core science,1971
-heat ray,1898
-helicab,1950
-helicar,1948
-holo,1970
-holo-,1968
-holocam,1968
-holocamera,1980
-holodeck,1987
-holoscreen,1979
-holotank,1979
-holovision,1968
-home galaxy,1951
-home planet,1930
-home star,1939
-home system,1947
-homeworld,1900
-humanoid,1940
-hyperspatial,1934
-hyperspeed,1956
-illo,1945
-impervium,1943
-impossible story,1929
-inner space,1953
-insectoid,1937
-in-system,1974
-inter-dimensional,1932
-interplanetary,1927
-intersystem,1949
-interworld,1942
-intra-system,1968
-ish,1939
-Jovian,1871
-jump engine,1981
-jump ship,1957
-jump space,1961
-Jupiterian,1941
-Klingon,1967
-laser gun,1964
-lettercol,1958
-letterhack,1946
-letterzine,1950
-levitator,1946
-lifeboat,1934
-lifepod,1976
-lifeship,1940
-light,1934
-light-speed,",000"
-little green man,1946
-loc,1961
-Luna,1931
-Luna City,1939
-Lunarian,1708
-mag-,1944
-mainstream,1953
-Martian,1874
-Mary Sue,1973
-matrix,1976
-matter transmission,1945
-matter transmitting,1925
-mech,1938
-megayear,1935
-Mercurian,1698
-microbook,1943
-mindlink,1970
-mind-meld,1976
-mind shield,1940
-moon base,1948
-morph,1982
-motherworld,1956
-multigeneration ship,1962
-multiversal,1963
-multiverse,1963
-mutant,1938
-mutation,1941
-mutie,1941
-nanite,1989
-nanobot,1991
-needle,1943
-needle beam,1920
-needle gun,1941
-needler,1937
-neo,1956
-neofan,1950
-Neptunian,1870
-neural,1955
-neuronic,1950
-newszine,1950
-non-genre,1975
-nonhumanoid,1953
-nontelepath,1937
-non-terrestrial,1932
-nova,1950
-nova bomb,1953
-null-g,1956
-null-grav,1956
-ob,1951
-off-earth,1949
-off-planet,1960
-off-trail,1938
-off-world,1950
-offworlder,1957
-on-planet,1953
-on-world,1989
-orbital,1986
-other-dimensional,1934
-outplanet,1955
-outsystem,1957
-outworld,1951
-outworlder,1934
-pangalactic,1977
-parahuman,1944
-parallel world,1931
-personalzine,1975
-perzine,1975
-plane,1919
-planetary engineering,1932
-planet-buster,1950
-planeteer,1927
-planet-killer,1959
-planetographer,1937
-planetography,1955
-planetscape,1990
-planetside,1955
-planet-wide,1934
-plastiskin,1953
-Plutonian,1931
-pocket universe,1946
-pod person,1956
-positronic,1941
-post-apocalyptic,1978
-post-catastrophe,1977
-post-holocaust,1977
-posthuman,1936
-posthumanism,1985
-posthumanist,1985
-posthumanity,1985
-precog,1948
-pre-space,1949
-prespaceflight,1972
-pressor,1931
-probability world,1943
-prodom,1953
-promag,1939
-proto-cyberpunk,1991
-prozine,1942
-pseudo-grav,1955
-pseudo-gravity,1941
-pseudo-scientific,1880
-psionic,1951
-psionically,1968
-psionics,1952
-pub,1951
-pulp science fiction,1948
-raise,1929
-ray,1930
-ray gun,1916
-ray projector,1930
-reaction drive,1949
-relaxacon relaxicon,1957
-robo-,1945
-roboticist,1940
-robotics,1941
-rocketeer,1941
-rocketman,1931
-round robin,1944
-sapience,1962
-sapient,1962
-Saturnian,1738
-science fantasy,1935
-science-fictional,1935
-science-fictionality,1996
-science-fictionally,1936
-science fictioneer,1940
-science fictioner,1953
-science fictionist,1936
-science-fictiony,1962
-science story,1930
-scienti-,1934
-scientific romance,1855
-scientifictional,1929
-scientifictionist,1933
-scientifilm,1934
-sci-fic,1939
-sentience,1947
-sentient,1930
-sercon,1958
-SF,1929
-SF/F/H,1991
-SF-ish,1976
-sharecrop,1989
-sharecropper,1987
-shared world,1985
-shield,1930
-shuttlecraft,1967
-shuttleport,1973
-skiffy,1982
-skimmer,1949
-skinsuit,1971
-slan shack,1969
-slidewalk,1944
-slideway,1942
-slower-than-light,1953
-slugthrower,1965
-smeggy,1988
-smeghead,1988
-Sol,1929
-Solarian,1930
-solido,1956
-solidograph,1948
-Sol-type,1950
-somewhen,1941
-space,1947
-space ark,1948
-space armor,1933
-spaceboot,1945
-space-borne,1950
-space-burned,1942
-space cadet,1948
-space dock,1945
-space dog,1940
-space drive,1932
-spacefaring,1952
-space fiction,1948
-spacefield,1939
-space fleet,1931
-space flying,1927
-space force,1940
-space freighter,1940
-space-going,1946
-spacehand,1938
-spacehound,1931
-space lane,1928
-spaceline,1930
-spaceliner,1931
-spacelock,1930
-spacemanship,1932
-space marine,1955
-space navigator,1930
-space operatic,1953
-space patrol,1936
-space person,1952
-space-sick,1911
-space tan,1942
-space-tanned,1942
-space-traveling,1930
-space tug,1942
-spaceward,1939
-spaceways,1933
-spaceworthiness,1934
-spaceworthy,1931
-space yacht,1940
-spaceyard,1948
-spec fic,1980
-Standard,1965
-star-cruiser,1964
-star drive,1948
-starfarer,1970
-starfaring,1960
-starfleet,1968
-star flight,1944
-starlanes,1949
-starliner,1965
-starman,1932
-star-person,1932
-starport,1950
-starship,1934
-star traveler,1957
-Star Trek,1966
-star voyaging,1951
-starways,1936
-stefnist,1944
-Stepford,1972
-stun gun,1946
-stunner,1941
-sub-etheric,1946
-sublight,1966
-suit radio,1944
-supernormal,1936
-super-science,1929
-super-scientific,1919
-super-scientist,1928
-super-weapon,1939
-system-wide,1943
-technothriller,1986
-teleporter,1967
-telescreen,1932
-Tellus,1928
-temporal paradox,1954
-Terra,1871
-terraformed,1942
-terraformer,1942
-terraforming,1942
-Terran,1881
-Terrestrian,1930
-thish,1953
-three-D,1954
-tight-beam,1994
-timecop,1953
-time hopper,1963
-timeline,1941
-time machine,1894
-timepath,1934
-timescape,1976
-time storm,1942
-time-track,1942
-time travel,1941
-time traveler,1894
-time-traveling,1937
-time viewer,1940
-torch,1956
-torch drive,1976
-torchship,1953
-tractor,1931
-transdimensional,1931
-transgalactic,1930
-transhuman,1952
-transhumanity,1978
-tri-D,1947
-tri-v,1954
-Tuckerize,1975
-ultradrive,1951
-ultraphone,1928
-ultraviolence,1962
-ultrawave,1934
-unhuman,1953
-universe,1965
-unsuit,1964
-unsuited,1966
-uplift,1980
-uplifting,1980
-uptime,1973
-Uranian,1870
-vac suit,1939
-vacuum suit,1930
-Venerian,1874
-Venusian,1874
-vibroblade,1940
-vibroknife,1973
-vidphone,1953
-vidscreen,1969
-viewphone,1964
-viewplate,1928
-viewport,1935
-vision plate,1932
-vision screen,1934
-visiphone,1915
-visiplate,1930
-visiscreen,1938
-wallscreen,1936
-warp,1946
-warp drive,1949
-webcast,1987
-Whovian,1982
-wirehead,1973
-wireheading,1973
-worldlet,1926
-xenoanthropology,1966
-xenobiological,1958
-xenobiologist,1954
-xenobiology,1954
-xenolinguist,1989
-xenological,1950
-xenologist,1949
-xenology,1954
-X-Phile,1994
-zero-g,1952
-zine,1944
-Zines,1930
+actifan,1944
+aerocar,1900
+AI,1973
+air-car,1829
+alien,1820
+alternate future,1941
+alternate history,1954
+alternate reality,1950
+alternate universe,1950
+alternate world,1944
+alternative future,1939
+alternative history,1977
+alternative reality,1941
+alternative universe,1944
+alternative world,1943
+android,1727
+Anglic,1957
+annish,1950
+ansible,1966
+anti-agathic,1954
+antigrav,1941
+anti-gravitational,1900
+anti-gravity,1896
+antispinward,1970
+anywhen,1941
+APA,1944
+apazine,1944
+artificial gravity,1930
+artificial intelligence,1973
+astrogate,1941
+astrogation,1931
+astrogational,1941
+astrogator,1935
+astronavigation,1935
+astronavigator,1941
+atomics,1932
+avian,1930
+bacover,1951
+BDO,1993
+beam,1951
+beam-me-up (Scotty),1988
+beanstalk,1979
+belter,1966
+BEM,1939
+bheer,1959
+Big Brother,1949
+big dumb object,1981
+biopunk,1992
+blaster,1925
+blast off,1937
+blowup,1945
+BNF,1950
+boat,1928
+body-waldo,1963
+bot,1969
+braintape,1979
+brave new world,1933
+Buck Rogers,1946
+bug-eyed monster,1939
+chrononaut,1963
+chronoscope,1938
+Clarke orbit,1945
+Clarke's First Law,1962
+Clarke's Second Law,1962
+Clarke's Third Law,1968
+cloaking device,1968
+clubzine,1969
+COA,1961
+cognitive estrangement,1972
+cold sleep,1956
+cold sleeper,1992
+collapsium,1963
+comlink,1976
+completism,1944
+completist,1944
+comset,1966
+con,1942
+-con,1940
+congoer,1960
+conreport,1953
+continuum,1946
+contraterrene,1941
+corflu,1960
+corpsesicle,1966
+cosy catastrophe,1973
+counter-gravity,1951
+craft,1934
+credit,1934
+croggle,1959
+crudzine,1975
+cruiser,1912
+cryostasis,1975
+cyberpunk,1983
+cyberpunkish,1989
+cyberspace,1982
+cyborg,1976
+cyborged,1976
+cyborging,1978
+cyborgisation,1994
+cyborgised,1989
+dalek,1963
+dark side,1939
+dayside,1914
+death ray,1915
+deep space,1934
+deflector,1945
+different story,1928
+dimension,1896
+dimensional,1928
+dirtside,1953
+dirtsider,1992
+disaster novel,1959
+disintegrator,1925
+disruptor,1931
+doomwatch,1970
+doomwatcher,1971
+doubleplusungood,1949
+doublethink,1949
+downtime,1973
+droid,1976
+dropshaft,1952
+Dyson sphere,1960
+dystopia,1868
+dystopian,1953
+dystopic,1967
+Earthborn,1900
+Earther,1952
+Earthfall,1957
+Earthfolk,1914
+Earthgirl,1924
+Earthian,1934
+Earthie,1947
+Earthlike,1928
+Earthling,1939
+Earthman,1913
+Earthnorm,1951
+Earth-normal,1942
+Earthperson,1930
+Earthside,1948
+Earthsider,1993
+Earth-type,1941
+Earthwoman,1934
+ecotopia,1975
+edisonade,1993
+eetee,1956
+egoboo,1947
+egoscan,1975
+elsewhen,1982
+empath,1956
+empathic,1959
+empathy,1955
+energy screen,1944
+energy weapon,1941
+escape pod,1976
+esp,1949
+esper,1950
+ET,1944
+everywhen,1955
+exoskeleton,1968
+expository lump,1981
+extra-dimensional,1934
+extra-planetary,1931
+extraterrestrial,1941
+eyetracks,1952
+faan,1961
+faanish,1969
+fafia,1975
+fafiate,1989
+fakefan,1939
+fanac,1950
+faned,1945
+fanfic,1976
+fan fiction,1939
+fanmag,1937
+fanne,1944
+fanning,1948
+fannish,1944
+fannishness,1959
+fanspeak,1952
+fantascience,1934
+fantastic,1931
+fantasy,1932
+fanzine,1940
+farside,1961
+faster-than-light,1947
+faster than light,1912
+feelie,1931
+Feghoot,1956
+femfan,1944
+fen,1944
+FIAWOL,1952
+FIJAGH,1959
+filk,1978
+filker,1982
+filking,1981
+filksing,1972
+fillo,1959
+first contact,1935
+fix-up,1975
+flame pistol,1932
+flash crowd,1973
+flitter,1941
+floater,1935
+fmz,1941
+food pill,1915
+force field,1931
+Frankenstein complex,1947
+free fall,1931
+frell,2001
+frelling,1999
+fresher,1940
+fringefan,1969
+FTL,1958
+fugghead,1950
+fuggheadedness,1949
+future history,1941
+future war,1931
+gadget,1942
+gafia,1944
+gafiate,1959
+gafiation,1959
+galactic,1942
+galactography,1950
+galaxy-wide,1940
+gas giant,1952
+gate,1931
+gateway,1933
+gee,1949
+generation,1977
+generation ship,1957
+genetic engineer,1954
+genetic engineering,1951
+genre,1974
+genre science fiction,1979
+genzine,1966
+ghod,1952
+glassite,1934
+GOH,1967
+golden age,1948
+go nova,1942
+goshwow,1939
+go supernova,1942
+graser,1974
+grav,1940
+gravitic,1939
+gravitics,1944
+gravity drive,1950
+gravity-free,1931
+gravityless,1939
+gravity plate,1933
+gravity screen,1928
+gravity well,1963
+gravs,1940
+grok,1961
+groundcar,1937
+groundhog,1942
+groundside,1961
+group mind,1930
+-h-,1940
+hard‐core science,1971
+hard science fiction,1957
+heat ray,1898
+helicab,1950
+helicar,1948
+hive mind,1950
+holo,1970
+holo-,1968
+holocam,1968
+holocamera,1980
+holodeck,1987
+hologram,1974
+holoscreen,1979
+holotank,1979
+holovision,1968
+home galaxy,1951
+home planet,1930
+home star,1939
+home system,1947
+homeworld,1900
+Homo superior,1935
+horror,1869
+Hugo,1950
+humanoid,1940
+hyperdrive,1949
+hyperspace,1928
+hyperspatial,1934
+hyperspeed,1956
+hypnopaedia,1932
+illo,1945
+imaginative fiction,1914
+impervium,1943
+impossible story,1929
+infodump,1990
+inner space,1953
+insectoid,1937
+in-system,1974
+inter-dimensional,1932
+interplanetary,1927
+intersystem,1949
+interworld,1942
+intra-system,1968
+ion drive,1947
+ish,1939
+jack in,1970
+Jovian,1871
+jump,1952
+jump drive,1963
+jump engine,1981
+jump gate,1995
+jump point,1964
+jump ship,1957
+jump space,1961
+Jupiterian,1941
+Klingon,1967
+K/S,1977
+landing cradle,1942
+laser gun,1964
+lay story,1976
+lettercol,1958
+letterhack,1946
+letterzine,1950
+levitator,1946
+lifeboat,1934
+lifepod,1976
+lifeship,1940
+light,1934
+light sail,1963
+light-speed,1929
+little green man,1946
+loc,1961
+Luna,1931
+Luna City,1939
+Lunarian,1708
+mad scientist,1908
+mag-,1944
+mainstream,1953
+Martian,1874
+Mary Sue,1973
+matrix,1976
+matter transmission,1945
+matter transmitter,1931
+matter transmitting,1925
+meat puppet,1984
+mech,1938
+megayear,1935
+Mercurian,1698
+microbook,1943
+military science fiction,1979
+mindlink,1970
+mind-meld,1976
+mind shield,1940
+monster movie,1932
+moon base,1948
+moonsuit,1947
+morph,1982
+mosaic novel,1986
+motherworld,1956
+multigeneration ship,1962
+multiversal,1963
+multiverse,1963
+mundane,1944
+mundania,1965
+mutant,1938
+mutation,1941
+mutie,1941
+nanite,1990
+nanobot,1991
+Nebula,1966
+needle,1943
+needle beam,1920
+needle gun,1941
+needler,1937
+neo,1956
+neofan,1950
+Neptunian,1870
+neural,1955
+neuronic,1950
+newspeak,1949
+newszine,1950
+New Wave,1961
+non-genre,1975
+nonhumanoid,1953
+nontelepath,1937
+non-terrestrial,1932
+normal space,1940
+nova,1950
+nova bomb,1953
+novum,1972
+null-g,1956
+null-grav,1956
+ob,1951
+off-earth,1949
+off-planet,1960
+off-trail,1938
+off-world,1950
+offworlder,1957
+oldspeak,1949
+on-planet,1953
+on-world,1989
+orbital,1986
+organlegger,1967
+other-dimensional,1934
+outplanet,1955
+outsystem,1957
+outworld,1934
+outworlder,1934
+overdrive,1945
+overmind,1953
+pangalactic,1977
+pantropy,1952
+parahuman,1944
+parallel universe,1923
+parallel world,1931
+parking orbit,1953
+passifan,1944
+personalzine,1975
+perzine,1975
+phaser,1966
+plane,1919
+planetary engineering,1932
+planetary romance,1978
+planet-bound,1944
+planet-buster,1950
+planeteer,1927
+planetfall,1944
+planet-killer,1959
+planetographer,1937
+planetography,1955
+planetscape,1990
+planetside,1955
+planet-smasher,1947
+planet-wide,1934
+planet-wrecker,1946
+plasteel,1956
+plastiskin,1953
+Plutonian,1931
+pocket universe,1946
+pod person,1955
+positronic,1941
+post-apocalypse,1970
+post-apocalyptic,1978
+post-catastrophe,1977
+post-cyberpunk,1990
+post-holocaust,1977
+posthuman,1936
+posthumanism,1985
+posthumanist,1985
+posthumanity,1985
+precog,1948
+pre-space,1949
+prespaceflight,1972
+pressor,1931
+pressor beam,1931
+pressure suit,1928
+prime directive,1947
+probability world,1943
+prodom,1953
+promag,1939
+proto-cyberpunk,1991
+proto-science fiction,1962
+prozine,1942
+pseudo-grav,1955
+pseudo-gravity,1941
+pseudo-science,1927
+pseudo-scientific,1880
+psionic,1951
+psionically,1968
+psionics,1952
+pub,1951
+pulp science fiction,1948
+raise,1929
+ramscoop,1966
+ray,1930
+ray gun,1916
+ray projector,1930
+reaction drive,1949
+redshirt,1985
+relaxacon relaxicon,1957
+replicant,1981
+rim world,1957
+robo-,1945
+robot,1920
+robotic,1941
+roboticist,1940
+robotics,1941
+rocketeer,1941
+rocketman,1931
+round robin,1944
+sapience,1962
+sapient,1962
+Saturnian,1738
+science fantasy,1935
+science fiction,1851
+science-fictional,1935
+science-fictionality,1996
+science-fictionally,1936
+science fictioneer,1940
+science fictioner,1953
+science fictionist,1936
+science-fictiony,1962
+science story,1930
+scienti-,1934
+scientifantasy,1936
+scientific fantasy,1888
+scientific fiction,1876
+scientific romance,1855
+scientifiction,1916
+scientifictional,1929
+scientifictionist,1933
+scientifilm,1934
+sci-fi,1949
+sci-fic,1939
+seetee,1943
+Selenite,1645
+semi-prozine,1975
+sense of wonder,1935
+sentience,1947
+sentient,1930
+sercon,1952
+SF,1929
+SF/F/H,1991
+SF-ish,1976
+SFnal,1981
+sharecrop,1989
+sharecropper,1987
+sharecropping,1987
+shared world,1985
+shield,1930
+ship,1894
+shipper,1996
+shuttle,1940
+shuttlecraft,1967
+shuttleport,1973
+singularity,1958
+skiffy,1982
+skimmer,1949
+skinsuit,1971
+slan,1940
+slan shack,1944
+slash,1984
+sleeper ship,1968
+slidewalk,1944
+slideway,1942
+slipstream,1989
+slower-than-light,1953
+slugthrower,1965
+smeg,1988
+smegging,1988
+smeggy,1988
+smeghead,1988
+smof,1968
+SMOF,1965
+soft science fiction,1977
+Sol,1929
+Sol III,1941
+Solarian,1930
+solido,1956
+solidograph,1948
+Sol-type,1950
+soma,1932
+somewhen,1941
+sophont,1966
+space,1947
+space ark,1948
+space armor,1933
+spaceboat,1934
+spaceboot,1945
+space-borne,1950
+space-burned,1942
+space cadet,1948
+space can,1948
+space car,1928
+space colony,1949
+spacecraft,1930
+space cruiser,1930
+space dock,1945
+space dog,1940
+space drive,1932
+space elevator,1975
+spacefarer,1939
+spacefaring,1952
+space fiction,1948
+spacefield,1939
+space fleet,1931
+space flier,1931
+space flight,1931
+space flyer,1911
+space flying,1927
+space force,1940
+space freighter,1940
+space-going,1946
+spacehand,1938
+space helmet,1931
+spacehound,1931
+space lane,1928
+spaceline,1930
+spaceliner,1931
+spacelock,1930
+spaceman,1933
+spacemanship,1932
+space marine,1955
+space navigator,1930
+space opera,1941
+space operatic,1953
+space patrol,1936
+space person,1952
+space pirate,1933
+spaceport,1930
+spacer,1940
+spaceship,1894
+space-sick,1911
+space-sickness,1911
+spacesuit,1929
+space tan,1942
+space-tanned,1942
+space travel,1929
+space traveler,1929
+space-traveling,1930
+space tug,1942
+space vehicle,1930
+space vessel,1929
+spaceward,1939
+space warp,1935
+spaceways,1933
+spacewoman,1951
+spaceworthiness,1934
+spaceworthy,1931
+space yacht,1940
+spaceyard,1948
+spec fic,1980
+speculative fiction,1889
+spinward,1970
+spy ray,1934
+Standard,1965
+starbase,1944
+star-cruiser,1964
+star drive,1948
+starfarer,1970
+starfaring,1960
+starfleet,1968
+star flight,1944
+stargate,1958
+starlanes,1949
+starliner,1965
+starman,1932
+star-person,1932
+starport,1950
+starship,1934
+star travel,1946
+star traveler,1957
+star voyaging,1951
+star wars,1982
+starways,1936
+stasis field,1942
+steampunk,1987
+stefnist,1944
+Stepford,1981
+stf,1931
+stf-,1940
+stfan,1940
+stfantasy,1944
+stfdom,1947
+stfnal,1944
+stim,1967
+stun gun,1946
+stunner,1941
+Sturgeon's Law,1957
+sub-ether,1930
+sub-etheric,1946
+subfandom,1969
+subjunctivity,1969
+sublight,1966
+subspace,1940
+suit,1928
+suit radio,1944
+supernormal,1936
+super-science,1929
+super-scientific,1919
+super-scientist,1928
+super-weapon,1939
+system-wide,1943
+tanstaafl,1949
+tardis,1969
+technothriller,1986
+telempathic,1963
+teleport,1944
+teleportation,1943
+teleporter,1967
+telescreen,1932
+Tellurian,1847
+Tellus,1928
+temporal paradox,1954
+Terra,1871
+terraform,1942
+terraformed,1942
+terraformer,1942
+terraforming,1942
+Terran,1881
+terrene,1941
+Terrestrial,1873
+Terrestrian,1930
+thish,1953
+thoughtcrime,1949
+three-D,1954
+three-v,1954
+tight-beam,1994
+timecop,1953
+time hopper,1963
+timeline,1941
+time machine,1894
+time paradox,1939
+timepath,1934
+timescape,1976
+timeslip,1932
+time storm,1942
+time stream,1931
+time-track,1942
+time travel,1941
+time traveler,1894
+time-traveling,1937
+time viewer,1940
+time warp,1938
+tin can,1940
+torch,1956
+torch drive,1976
+torchship,1953
+tractor,1931
+tractor beam,1931
+transdimensional,1931
+transgalactic,1930
+transhuman,1952
+transhumanity,1978
+Trekker,1970
+Trekkie,1970
+tri-D,1947
+trideo,1953
+tri-dim,1951
+triffid,1951
+tri-v,1954
+tri-vid,1955
+trufan,1954
+Tuckerism,1959
+Tuckerize,1975
+Twonk's disease,1944
+uchronia,1876
+ultradrive,1951
+ultraphone,1928
+ultraviolence,1962
+ultrawave,1934
+unhuman,1953
+universe,1965
+unperson,1949
+unsuit,1964
+unsuited,1966
+uplift,1980
+uplifting,1980
+uptime,1973
+Uranian,1870
+utopia,1613
+vac suit,1939
+vacuum suit,1930
+Venerian,1874
+Venusian,1874
+-verse,1985
+vessel,1900
+vibroblade,1940
+vibroknife,1973
+vid,1985
+videophone,1945
+vidphone,1953
+vidscreen,1969
+viewphone,1964
+viewplate,1928
+viewport,1935
+viewscreen,1939
+virus,1972
+vision plate,1932
+vision screen,1934
+visiphone,1915
+visiplate,1930
+visiscreen,1938
+waldo,1942
+wallscreen,1936
+warp,1946
+warp drive,1949
+warp speed,1968
+webcast,1987
+Whovian,1982
+widescreen baroque,1973
+wirehead,1973
+wireheading,1973
+world-building,1965
+worldlet,1926
+worm,1975
+xeno-,1949
+xenoanthropology,1966
+xenobiological,1958
+xenobiologist,1954
+xenobiology,1954
+xenocide,1983
+xenolinguist,1989
+xenological,1950
+xenologist,1949
+xenology,1954
+X-Phile,1994
+zero-g,1952
+zero gravity,1938
+zine,1944
+-zine,1944
