@@ -107,9 +107,9 @@ def search_all_terms():
 
 
 #API KEYS. REMOVE BEFORE PUSHING TO GITHUB-----------------
-mw_key = "3d4e9983-e73b-4cb3-bee3-5805e02458f1"
-oxford_app_id = "6f14dd69"
-oxford_key = "14ae09e67159519302fdab124cade1ea"
+mw_key = "a"
+oxford_app_id = "a"
+oxford_key = "a"
 #----------------------------------------------------------------------------
 
 search_all_terms()
