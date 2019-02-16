@@ -114,12 +114,19 @@ def formatData():
             t = re.sub('{.*?}', '', mw)
             wr.writerow([t])
 
+def fixOxford():
+    with open("raw.txt") as f:
+        line = f.readline()
+        while line:
+            print(line.replace("']", "").replace("]", ""))
+
+            line = f.readline()
 #API KEYS. REMOVE BEFORE PUSHING TO GITHUB-----------------
 mw_key = "a"
 oxford_app_id = "a"
 oxford_key = "a"
 #----------------------------------------------------------------------------
-formatData()
+fixOxford()
 
 
 
