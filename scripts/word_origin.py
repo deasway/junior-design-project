@@ -5,6 +5,7 @@ import re
 import csv
 import requests
 import time
+import re
 
 def search_both(term):
     search_mw_term(term)
@@ -104,15 +105,21 @@ def search_all_terms():
             time.sleep(5)
 
 
-
+def formatData():
+    with open("word_origin.csv", "r") as f, open("mw2.csv", "w") as d:
+        reader = csv.reader(f)
+        wr = csv.writer(d)
+        for row in reader:
+            mw = row[1]
+            t = re.sub('{.*?}', '', mw)
+            wr.writerow([t])
 
 #API KEYS. REMOVE BEFORE PUSHING TO GITHUB-----------------
 mw_key = "a"
 oxford_app_id = "a"
 oxford_key = "a"
 #----------------------------------------------------------------------------
-
-search_all_terms()
+formatData()
 
 
 
