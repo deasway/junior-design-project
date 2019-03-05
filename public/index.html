@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,8 @@
         <!--<link rel="stylesheet" href="css/searchstuff.css">-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
-    
+
     <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
-    
     <script>
       // Initialize Firebase
       var config = {
@@ -24,11 +23,9 @@
       };
       firebase.initializeApp(config);
     </script>
-    
-    <script src="firebase-demo.js"></script>
 
+    <body>
 
-    <body>    
         <! Nav bar with dummy links>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -47,8 +44,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-                        <li><a href="search.html">Search</a></li>
-                        <li><a href="map.html">Map</a></li>
+                        <li><a href="searchAmp.html">Search Amplitude</a></li>
+                        <li><a href="searchMap.html">Search Map</a></li>
+                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
@@ -57,16 +55,14 @@
         <div class="jumbotron" style="text-align: center; padding-left: 40px; padding-right: 40px; margin-left: 40px; margin-right: 40px">
             <h1 class="display-4">Space Dinosaur Project</h1>
             <p class="lead">
-                It is a widely accepted fact that the worlds of science fiction and scientific research are related in some way. However, this relationship has proven difficult to quantify. 
+                It is a widely accepted fact that the worlds of science fiction and scientific research are related in some way. However, this relationship has proven difficult to quantify.
             </p>
             <hr class="py-4">
             <p>
                 This project will seek to use web scraping to parse various science databases for references to science fiction works, concepts, and authors that have influenced modern technologies. This archive will then be used to produce statistical models that demonstrate how the world of speculative science fiction and modern scientific thought are hardwired at the most basic levels.            </p>
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="search.html" role="button">Search for a Term</a>
-                <a class="btn btn-primary btn-lg" href="map.html" role="button">Amplitude Map</a>
+                <a class="btn btn-primary btn-lg" href="searchAmp.html" role="button">Search for a Term</a>
             </p>
         </div>
     </body>
 </html>
-
