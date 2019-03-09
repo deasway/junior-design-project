@@ -1,0 +1,166 @@
+[debug] [2019-03-08T17:35:07.221Z] ----------------------------------------------------------------------
+[debug] [2019-03-08T17:35:07.223Z] Command:       /usr/local/Cellar/node/11.10.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-03-08T17:35:07.223Z] CLI Version:   6.3.1
+[debug] [2019-03-08T17:35:07.223Z] Platform:      darwin
+[debug] [2019-03-08T17:35:07.223Z] Node Version:  v11.10.0
+[debug] [2019-03-08T17:35:07.224Z] Time:          Fri Mar 08 2019 12:35:07 GMT-0500 (Eastern Standard Time)
+[debug] [2019-03-08T17:35:07.224Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-08T17:35:07.231Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-08T17:35:07.231Z] > authorizing via signed-in user
+[debug] [2019-03-08T17:35:07.231Z] [iam] checking project junior-design-project for permissions ["firebase.projects.get"]
+[debug] [2019-03-08T17:35:07.232Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project:testIamPermissions  
+
+[debug] [2019-03-08T17:35:07.469Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-08T17:35:07.470Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project  
+ 
+[debug] [2019-03-08T17:35:07.671Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/dasomeom/GitHub/junior-design-project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-08T17:35:07.989Z] Fetching environment
+[debug] [2019-03-08T17:35:07.990Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667:getServerAppConfig  
+ 
+[debug] [2019-03-08T17:35:07.990Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-08T17:35:08.162Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-08T17:35:08.162Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-08T17:35:08.218Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-03-08T17:35:09.198Z] Parsing function triggers
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[debug] [2019-03-08T17:35:09.294Z] Error during trigger parsing:  Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[warn] ⚠  functions: Error from emulator. Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2019-03-08T17:35:09.295Z] 
+[debug] [2019-03-08T19:02:31.820Z] ----------------------------------------------------------------------
+[debug] [2019-03-08T19:02:31.823Z] Command:       /usr/local/Cellar/node/11.10.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-03-08T19:02:31.823Z] CLI Version:   6.3.1
+[debug] [2019-03-08T19:02:31.823Z] Platform:      darwin
+[debug] [2019-03-08T19:02:31.823Z] Node Version:  v11.10.0
+[debug] [2019-03-08T19:02:31.824Z] Time:          Fri Mar 08 2019 14:02:31 GMT-0500 (Eastern Standard Time)
+[debug] [2019-03-08T19:02:31.824Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-08T19:02:31.832Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-08T19:02:31.832Z] > authorizing via signed-in user
+[debug] [2019-03-08T19:02:31.832Z] [iam] checking project junior-design-project for permissions ["firebase.projects.get"]
+[debug] [2019-03-08T19:02:31.834Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project:testIamPermissions  
+
+[debug] [2019-03-08T19:02:32.051Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-08T19:02:32.053Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project  
+ 
+[debug] [2019-03-08T19:02:32.243Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/dasomeom/GitHub/junior-design-project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-08T19:02:32.563Z] Fetching environment
+[debug] [2019-03-08T19:02:32.564Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667:getServerAppConfig  
+ 
+[debug] [2019-03-08T19:02:32.565Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-08T19:02:32.738Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-08T19:02:32.738Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-08T19:02:32.815Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2019-03-08T19:02:33.781Z] Parsing function triggers
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[debug] [2019-03-08T19:02:33.874Z] Error during trigger parsing:  Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[warn] ⚠  functions: Error from emulator. Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2019-03-08T19:02:33.874Z] 
+[debug] [2019-03-09T00:00:03.894Z] ----------------------------------------------------------------------
+[debug] [2019-03-09T00:00:03.896Z] Command:       /usr/local/Cellar/node/11.10.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-03-09T00:00:03.896Z] CLI Version:   6.3.1
+[debug] [2019-03-09T00:00:03.896Z] Platform:      darwin
+[debug] [2019-03-09T00:00:03.898Z] Node Version:  v11.10.0
+[debug] [2019-03-09T00:00:03.906Z] Time:          Fri Mar 08 2019 19:00:03 GMT-0500 (Eastern Standard Time)
+[debug] [2019-03-09T00:00:03.906Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-09T00:00:03.917Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-09T00:00:03.917Z] > authorizing via signed-in user
+[debug] [2019-03-09T00:00:03.917Z] [iam] checking project junior-design-project for permissions ["firebase.projects.get"]
+[debug] [2019-03-09T00:00:03.920Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-03-09T00:00:03.920Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-03-09T00:00:04.093Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-09T00:00:04.104Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project:testIamPermissions  
+
+[debug] [2019-03-09T00:00:04.321Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-09T00:00:04.322Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project  
+ 
+[debug] [2019-03-09T00:00:04.532Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/dasomeom/GitHub/junior-design-project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-09T00:00:05.143Z] Fetching environment
+[debug] [2019-03-09T00:00:05.145Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667:getServerAppConfig  
+ 
+[debug] [2019-03-09T00:00:05.145Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-09T00:00:05.329Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-09T00:00:05.329Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-09T00:00:05.463Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2019-03-09T00:00:06.376Z] Parsing function triggers
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[debug] [2019-03-09T00:00:06.485Z] Error during trigger parsing:  Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[warn] ⚠  functions: Error from emulator. Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2019-03-09T00:00:06.485Z] 
+[debug] [2019-03-09T00:01:40.401Z] ----------------------------------------------------------------------
+[debug] [2019-03-09T00:01:40.403Z] Command:       /usr/local/Cellar/node/11.10.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-03-09T00:01:40.403Z] CLI Version:   6.3.1
+[debug] [2019-03-09T00:01:40.403Z] Platform:      darwin
+[debug] [2019-03-09T00:01:40.403Z] Node Version:  v11.10.0
+[debug] [2019-03-09T00:01:40.404Z] Time:          Fri Mar 08 2019 19:01:40 GMT-0500 (Eastern Standard Time)
+[debug] [2019-03-09T00:01:40.405Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-09T00:01:40.411Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-09T00:01:40.412Z] > authorizing via signed-in user
+[debug] [2019-03-09T00:01:40.412Z] [iam] checking project junior-design-project for permissions ["firebase.projects.get"]
+[debug] [2019-03-09T00:01:40.413Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project:testIamPermissions  
+
+[debug] [2019-03-09T00:01:40.643Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-09T00:01:40.645Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project  
+ 
+[debug] [2019-03-09T00:01:40.849Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/dasomeom/GitHub/junior-design-project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-09T00:01:41.149Z] Fetching environment
+[debug] [2019-03-09T00:01:41.151Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667:getServerAppConfig  
+ 
+[debug] [2019-03-09T00:01:41.152Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-09T00:01:41.319Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-09T00:01:41.320Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-09T00:01:41.412Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-03-09T00:01:42.365Z] Parsing function triggers
+[warn] ⚠  functions: Failed to load functions source code. Ensure that you have the latest SDK by running npm i --save firebase-functions inside the functions directory.
+[debug] [2019-03-09T00:01:42.458Z] Error during trigger parsing:  Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[warn] ⚠  functions: Error from emulator. Error parsing triggers: Cannot find module 'firebase-admin'
+
+Try running "npm install" in your functions directory before deploying.
+[debug] [2019-03-09T00:01:42.459Z] 

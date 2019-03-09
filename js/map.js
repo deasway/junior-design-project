@@ -4,30 +4,17 @@ var width = 600,
     height = 500,
     barHeight = height / 2 - 40;
 var names = [];
-var formatNumber = d3.format("s");
-// var datamap = new Map();
-// datamap.set("2015", "data/data2015.csv");
-// datamap.set("2016", "data/data2016.csv");
-// var selYear = "2016";
-// function selectYear() {
-//     selYear = document.getElementById("mySelect").value;
-//     d3.select("svg").remove();
-//     loadGraph();
-// }
+//varformatNumber = d3.format("s");
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.split(search).join(replacement);
-};
-
-
-
+/**
+$('#form-autocomplete').mdb_autocomplete({
+data: names
+});
+**/
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const search_term = urlParams.get('search').toUpperCase();
-    var title = document.getElementById("title");
-    title.textContent += search_term;
-
+    //const search_term = urlParams.get('search').toLowerCase();
+    //console.log(search_termc
 
     var config = {
         apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
@@ -39,13 +26,29 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-    database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
+    database.ref('/').orderByChild('name').on("value", function(snapshot, names) {
         snapshot.forEach(function(child) {
-             names.add(child.name);
+            a = child.val()['name'];
+            dataPush(a);
         });
     });
 };
 
-$('#search').mdb_autocomplete({
-data: names
+
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
+function dataPush(term) {
+    //names = [];
+    var a = "" + term;
+    names.push(a.toLowerCase());
+}
+
+$(function() {
+      $("#tags").autocomplete({
+    source: names
+  });
 });
