@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c7c289d-f62e-4228-8fc6-98f52130b430" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/graph.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/graph.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chartjs_amplitude.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chartjs_amplitude.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chartjs_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chartjs_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/map.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/searchAmp.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/searchAmp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/searchMap.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/searchMap.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/searchMap.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" selection-start-line="11" selection-end-line="23" selection-end-column="74" />
+            <state relative-caret-position="667">
+              <caret line="58" column="109" selection-start-line="58" selection-start-column="109" selection-end-line="58" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -33,13 +28,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/searchAmp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="667">
+              <caret line="55" column="81" lean-forward="true" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/chartjs_amplitude.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="843">
@@ -112,13 +107,13 @@
         <option value="$PROJECT_DIR$/public/css/search_map.css" />
         <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/searchMap.html" />
         <option value="$PROJECT_DIR$/public/map.html" />
         <option value="$PROJECT_DIR$/public/js/chartjs_map.js" />
         <option value="$PROJECT_DIR$/public/js/map.js" />
-        <option value="$PROJECT_DIR$/public/searchAmp.html" />
         <option value="$PROJECT_DIR$/public/graph.html" />
         <option value="$PROJECT_DIR$/public/js/chartjs_amplitude.js" />
+        <option value="$PROJECT_DIR$/public/searchAmp.html" />
+        <option value="$PROJECT_DIR$/public/searchMap.html" />
       </list>
     </option>
   </component>
@@ -209,12 +204,12 @@
       <workItem from="1552014778259" duration="1000" />
       <workItem from="1552014783444" duration="1118000" />
       <workItem from="1552017771682" duration="3495000" />
-      <workItem from="1552066336979" duration="7749000" />
+      <workItem from="1552066336979" duration="8242000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12363000" />
+    <option name="totallyTimeSpent" value="12856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
@@ -349,20 +344,6 @@
     <entry file="file://$PROJECT_DIR$/public/js/amplitude.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/searchMap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" selection-start-line="11" selection-end-line="23" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/searchAmp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -377,6 +358,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/chartjs_amplitude.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="102" column="7" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/graph.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -384,10 +372,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/chartjs_amplitude.js">
+    <entry file="file://$PROJECT_DIR$/public/searchAmp.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="843">
-          <caret line="102" column="7" selection-start-line="102" selection-start-column="7" selection-end-line="102" selection-end-column="7" />
+        <state relative-caret-position="667">
+          <caret line="55" column="81" lean-forward="true" selection-start-line="55" selection-start-column="81" selection-end-line="55" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/searchMap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="58" column="109" selection-start-line="58" selection-start-column="109" selection-end-line="58" selection-end-column="109" />
         </state>
       </provider>
     </entry>

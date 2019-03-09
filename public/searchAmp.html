@@ -53,7 +53,7 @@
 
 <form action="graph.html" class="search" method="get">
     <div class="search__wrapper">
-        <input id="myInput" type="text" name="search" placeholder="Search for..." class="search__field" minlength="2">
+        <input id="myInput" type="text" name="search" placeholder="Search for..." pattern="^[a-zA-Z0-9_.-]*$" class="search__field" minlength="2">
         <button type="submit" class="fa fa-search search__icon"></button>
     </div>
 </form>
