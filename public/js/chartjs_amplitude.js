@@ -57,6 +57,7 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
+    var search_term2 = search_term.charAt(0).toUpperCase() + search_term.substr(1);
     database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
             var raw_data = child.val()['occurences'].replaceAll("'", '"');
@@ -68,7 +69,36 @@ window.onload = function() {
                     nums.push(value);
                 }
             });
-            loadGraph(labels, nums, search_term);
+            loadGraph(labels, nums, search_term.toUpperCase());
+        });
+    });
+    database.ref('/').orderByChild('name').equalTo(search_term.toUpperCase()).on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+            var raw_data = child.val()['occurences'].replaceAll("'", '"');
+            var labels = [];
+            var nums = [];
+            JSON.parse(raw_data, function(key, value) {
+                if (key) {
+                    labels.push(key);
+                    nums.push(value);
+                }
+            });
+            loadGraph(labels, nums, search_term.toUpperCase());
+        });
+    });
+
+    database.ref('/').orderByChild('name').equalTo(search_term2).on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+            var raw_data = child.val()['occurences'].replaceAll("'", '"');
+            var labels = [];
+            var nums = [];
+            JSON.parse(raw_data, function(key, value) {
+                if (key) {
+                    labels.push(key);
+                    nums.push(value);
+                }
+            });
+            loadGraph(labels, nums, search_term.toUpperCase());
         });
     });
 };

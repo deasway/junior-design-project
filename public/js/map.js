@@ -27,6 +27,7 @@ function dataPush(term) {
     //names = [];
     var a = "" + term;
     names.push(a.toLowerCase());
+    names.sort();
 }
 
 $( function() {

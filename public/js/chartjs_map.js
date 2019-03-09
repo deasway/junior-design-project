@@ -51,8 +51,10 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
+    var search_term2 = search_term.charAt(0).toUpperCase() + search_term.substr(1);
     database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
+            console.log(child.val()['name']);
             var raw_data = child.val()['fields'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
@@ -62,30 +64,40 @@ window.onload = function() {
                     nums.push(value);
                 }
             });
-            loadGraph(labels, nums, search_term);
+            loadGraph(labels, nums, search_term.toUpperCase());
+        });
+    });
+    database.ref('/').orderByChild('name').equalTo(search_term.toUpperCase()).on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+            console.log(child.val()['name']);
+            var raw_data = child.val()['fields'].replaceAll("'", '"');
+            var labels = [];
+            var nums = [];
+            JSON.parse(raw_data, function(key, value) {
+                if (key) {
+                    labels.push(key);
+                    nums.push(value);
+                }
+            });
+            loadGraph(labels, nums, search_term.toUpperCase());
+        });
+    });
+
+    database.ref('/').orderByChild('name').equalTo(search_term2).on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+            console.log(child.val()['name']);
+            var raw_data = child.val()['fields'].replaceAll("'", '"');
+            var labels = [];
+            var nums = [];
+            JSON.parse(raw_data, function(key, value) {
+                if (key) {
+                    labels.push(key);
+                    nums.push(value);
+                }
+            });
+            loadGraph(labels, nums, search_term.toUpperCase());
         });
     });
 };
 
 
-$.widget("ui.autocomplete", $.ui.autocomplete, {
-
-  _renderMenu: function(ul, items) {
-    var that = this;
-    ul.attr("class", "nav nav-pills nav-stacked  bs-autocomplete-menu");
-    $.each(items, function(index, item) {
-      that._renderItemData(ul, item);
-    });
-  },
-
-  _resizeMenu: function() {
-    var ul = this.menu.element;
-    ul.outerWidth(Math.min(
-      // Firefox wraps long text (possibly a rounding bug)
-      // so we add 1px to avoid the wrapping (#7513)
-      ul.width("").outerWidth() + 1,
-      this.element.outerWidth()
-    ));
-  }
-
-});
