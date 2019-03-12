@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/amplitude.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
@@ -51,13 +51,18 @@
 
 
 
-<form action="graph.html" class="search" method="get">
+<form id = "searchAmp_form" onsubmit="return validate();" form action="graph.html" class="search" method="get">
     <div class="search__wrapper">
-        <input id="myInput" type="text" name="search" placeholder="Search for..." pattern="^[a-zA-Z0-9_.-\s]*$" class="search__field" minlength="2">
+        <input id="myInput" type="text" name="search" placeholder="Search for..." pattern="^[a-zA-Z0-9-() ]*$" class="search__field" minlength="2" oninvalid="this.setCustomValidity('Words should be at least 2 characters. Uppercase and Lowercase alphabets, numbers, and ()- are allowed characters.')"
+               onchange="try{setCustomValidity('')}catch(e){}"
+               oninput="setCustomValidity(' ')">
         <button type="submit" class="fa fa-search search__icon"></button>
     </div>
 </form>
 
+<div class="alert_div">
+    <p id="alert"></p>
+</div>
 </body>
 </html>
 
