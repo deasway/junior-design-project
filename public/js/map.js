@@ -36,3 +36,54 @@ $( function() {
       source: names
     });
 });
+
+
+/**
+
+jQuery.validator.addMethod("search__field", function(value) {
+    names;
+    var in_array = $.inArray(value.toLowerCase(), names);
+    if (in_array == -1) {
+        console.log("nai");
+        return false;
+    }else{
+        console.log("yea");
+        return true;
+    }
+}, "No Result");
+
+
+$("#search_form").validate();
+
+function myFunction() {
+    names;
+    var inpObj = document.getElementById("search");
+    console.log(inpObj);
+    if (!inpObj.checkValidity()) {
+        document.getElementById("demo").innerHTML = inpObj.validationMessage;
+    } else {
+        document.getElementById("demo").innerHTML = "Input OK";
+    }
+}
+
+$('#search_form').validator().on('submit', function (e) {
+    if (e.isDefaultPrevented()) {
+        // handle the invalid form...
+    } else {
+        // everything looks good!
+    }
+})
+ **/
+
+function validate() {
+    names;
+    var inpObj = (document.getElementById('myInput').value);
+    var in_array = jQuery.inArray(inpObj.toLowerCase(), names);
+    if (in_array == -1) {
+        alert("No Result Found");
+        document.getElementById("alert2").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
+        return false;
+    }
+    return true;
+}
+

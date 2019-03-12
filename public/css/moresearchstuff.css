@@ -1,3 +1,14 @@
+#alert2 {
+    position: relative;
+    font-size: 1em;
+    color: red;
+}
+.alert_div {
+    text-align: center;
+    position:relative;
+    top: 450px;
+}
+
 .search {
     position: absolute;
     top: 50%;
@@ -134,3 +145,4 @@
     opacity: 1;
     visibility: visible !important;
 }
+
