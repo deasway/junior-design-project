@@ -18,16 +18,13 @@ window.onload = function() {
         });
 
     });
-
-
-
 };
 
 function dataPush(term) {
     //names = [];
     var a = "" + term;
     names.push(a.toLowerCase());
-    names.sort();
+//    names.sort();
 }
 
 $( function() {
@@ -42,6 +39,7 @@ function validate() {
     names;
     var inpObj = (document.getElementById('myInput').value);
     var in_array = jQuery.inArray(inpObj.toLowerCase(), names);
+    
     if (in_array == -1) {
         alert("No Result Found");
         document.getElementById("alert").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
