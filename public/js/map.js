@@ -11,7 +11,7 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-    database.ref('/').orderByChild('name').on("value", function(snapshot) {
+    database.ref('/').orderByChild('sorting_name').on("value", function(snapshot) {
         snapshot.forEach(function(child) {
             a = child.val()['name'];
             dataPush(a);
@@ -27,7 +27,6 @@ function dataPush(term) {
     //names = [];
     var a = "" + term;
     names.push(a.toLowerCase());
-    names.sort();
 }
 
 $( function() {

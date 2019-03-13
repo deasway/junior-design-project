@@ -11,7 +11,7 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-    database.ref('/').orderByChild('name').on("value", function(snapshot) {
+    database.ref('/').orderByChild('sorting_name').on("value", function(snapshot) {
         snapshot.forEach(function(child) {
             a = child.val()['name'];
             dataPush(a);
