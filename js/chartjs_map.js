@@ -3,7 +3,42 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.split(search).join(replacement);
 };
 
-function loadGraph(data_labels, data_content, term){
+function loadGraph(raw_data, term, k){
+    // sort k-num
+    var blacklist = ["ARTICLE", "PROCEEDINGS PAPER", "BOOK REVIEW", "REVIEW", "BOOK CHAPTER"];
+
+    var data_map = new Map();
+
+    JSON.parse(raw_data, function(key, value) {
+        if (key && !blacklist.includes(key)) {
+            data_map.set(key, value);
+        }
+    });
+
+    // sort data
+    data_map[Symbol.iterator] = function* () {
+        yield* [...this.entries()].sort((a, b) => b[1] - a[1]);
+    };
+
+    var data_labels = [];
+    var data_content = [];
+    var total_other = 0;
+
+    var i = 0;
+    for (let [key, value] of data_map) {
+        if (i < k) {
+            data_labels.push(key);
+            data_content.push(value);
+            i++;
+        } else {
+            console.log(value);
+            total_other += parseInt(value);
+        }
+    }
+
+    data_labels.push("OTHER");
+    data_content.push(total_other);
+
     var ctx = document.getElementById('myChart').getContext('2d');
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
@@ -17,12 +52,18 @@ function loadGraph(data_labels, data_content, term){
                     "red",
                     "green",
                     "blue",
-                    ],
+                    "orange",
+                    "purple",
+                    "black"
+                ],
                 backgroundColor: [
                     "pink",
                     "lightgreen",
                     "lightblue",
-                    ]
+                    "#ffc966",
+                    "#EE82EE",
+                    "gray"
+                ]
             }]
         },
 
@@ -33,6 +74,10 @@ function loadGraph(data_labels, data_content, term){
                 display: true,
                 text: "Results for " + term,
                 fontSize: 24
+            },
+
+            legend: {
+                position: "top"
             }
         }
     });
@@ -41,6 +86,7 @@ function loadGraph(data_labels, data_content, term){
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const search_term = urlParams.get('search').toLowerCase();
+    const k = urlParams.get('k');
     //console.log(search_term);
     var config = {
         apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
@@ -58,30 +104,14 @@ window.onload = function() {
         snapshot.forEach(function(child) {
             console.log(child.val()['name']);
             var raw_data = child.val()['fields'].replaceAll("'", '"');
-            var labels = [];
-            var nums = [];
-            JSON.parse(raw_data, function(key, value) {
-                if (key) {
-                    labels.push(key);
-                    nums.push(value);
-                }
-            });
-            loadGraph(labels, nums, search_term.toUpperCase());
+            loadGraph(raw_data, search_term.toUpperCase(), k);
         });
     });
     database.ref('/').orderByChild('name').equalTo(search_term.toUpperCase()).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
             console.log(child.val()['name']);
             var raw_data = child.val()['fields'].replaceAll("'", '"');
-            var labels = [];
-            var nums = [];
-            JSON.parse(raw_data, function(key, value) {
-                if (key) {
-                    labels.push(key);
-                    nums.push(value);
-                }
-            });
-            loadGraph(labels, nums, search_term.toUpperCase());
+            loadGraph(raw_data, search_term.toUpperCase(), k);
         });
     });
 
@@ -89,15 +119,7 @@ window.onload = function() {
         snapshot.forEach(function(child) {
             console.log(child.val()['name']);
             var raw_data = child.val()['fields'].replaceAll("'", '"');
-            var labels = [];
-            var nums = [];
-            JSON.parse(raw_data, function(key, value) {
-                if (key) {
-                    labels.push(key);
-                    nums.push(value);
-                }
-            });
-            loadGraph(labels, nums, search_term.toUpperCase());
+            loadGraph(raw_data, search_term.toUpperCase(), k);
         });
     });
 };
