@@ -60,7 +60,7 @@ window.onload = function() {
     var search_term2 = search_term.charAt(0).toUpperCase() + search_term.substr(1);
     database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
-            var raw_data = child.val()['occurences'].replaceAll("'", '"');
+            var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
             JSON.parse(raw_data, function(key, value) {
@@ -74,7 +74,7 @@ window.onload = function() {
     });
     database.ref('/').orderByChild('name').equalTo(search_term.toUpperCase()).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
-            var raw_data = child.val()['occurences'].replaceAll("'", '"');
+            var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
             JSON.parse(raw_data, function(key, value) {
@@ -89,7 +89,7 @@ window.onload = function() {
 
     database.ref('/').orderByChild('name').equalTo(search_term2).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
-            var raw_data = child.val()['occurences'].replaceAll("'", '"');
+            var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
             JSON.parse(raw_data, function(key, value) {
