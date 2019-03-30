@@ -67,8 +67,6 @@ function loadGraph(term, k){
         }
     };
     for (i = 0; i < k; i++) {
-        console.log(i);
-        console.log(k);
         var cat = sortedCats[i];
         var cat_Y_axis = getOccurrencesForCategory(cat);  
         var colorName = colorNames[config.data.datasets.length % colorNames.length];

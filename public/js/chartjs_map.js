@@ -31,7 +31,6 @@ function loadGraph(raw_data, term, k){
             data_content.push(value);
             i++;
         } else {
-            console.log(value);
             total_other += parseInt(value);
         }
     }
@@ -99,27 +98,11 @@ window.onload = function() {
     firebase.initializeApp(config);
     var database = firebase.database();
 
-    var search_term2 = search_term.charAt(0).toUpperCase() + search_term.substr(1);
-    database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            console.log(child.val()['name']);
-            var raw_data = child.val()['fields'].replaceAll("'", '"');
-            loadGraph(raw_data, search_term.toUpperCase(), k);
-        });
-    });
-    database.ref('/').orderByChild('name').equalTo(search_term.toUpperCase()).on("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            console.log(child.val()['name']);
-            var raw_data = child.val()['fields'].replaceAll("'", '"');
-            loadGraph(raw_data, search_term.toUpperCase(), k);
-        });
-    });
 
-    database.ref('/').orderByChild('name').equalTo(search_term2).on("value", function(snapshot) {
+    database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
         snapshot.forEach(function(child) {
-            console.log(child.val()['name']);
             var raw_data = child.val()['fields'].replaceAll("'", '"');
-            loadGraph(raw_data, search_term.toUpperCase(), k);
+            loadGraph(raw_data, child.val()['name'], k);
         });
     });
 };
