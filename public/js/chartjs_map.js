@@ -5,7 +5,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
 function loadGraph(raw_data, term, k){
     // sort k-num
-    var blacklist = ["ARTICLE", "PROCEEDINGS PAPER", "BOOK REVIEW", "REVIEW", "BOOK CHAPTER"];
+//    var blacklist = ["ARTICLE", "PROCEEDINGS PAPER", "BOOK REVIEW", "REVIEW", "BOOK CHAPTER"];
 
     var data_map = new Map();
 
