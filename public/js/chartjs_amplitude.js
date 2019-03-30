@@ -3,19 +3,34 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.split(search).join(replacement);
 };
 
-function loadGraph(data_labels, data_content, term){
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myAmplitudeGraph = new Chart(ctx, {
-        type: 'line',
+// global variables that always and are instantiated on pageload
+var yearlyCatData = null;
+var total_X_axis = [];
+var total_Y_axis = [];
+var sortedCats = [];
+window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+var colorNames = Object.keys(window.chartColors);
 
+function loadGraph(term, k){
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var config = {
+        type: 'line',
         // Dataset to display
         data: {
-            labels: data_labels,
+            labels: total_X_axis,
             datasets: [{
-                label: "Occurrences",
+                label: "Total Occurrences",
                 lineTension: 0,
-                spanGaps: true,
-                data: data_content,
+                fill: false,
+                data: total_Y_axis,
                 backgroundColor: 'rgba(255, 99, 132,0.1)',
                 borderColor: 'rgb(255, 99, 132)',
             }]
@@ -28,9 +43,9 @@ function loadGraph(data_labels, data_content, term){
                 text: "Results for " + term,
                 fontSize: 24
             },
-            // responsive: false,
+            responsive: true,
             legend: {
-                display: false
+                display: true
             },
             elements: {
                 point: {
@@ -42,17 +57,55 @@ function loadGraph(data_labels, data_content, term){
             },
             scales: {
                 yAxes: [{
-                    stacked: true
+                    stacked: false
                 }]
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
             }
         }
-    });
+    };
+    for (i = 0; i < k; i++) {
+        console.log(i);
+        console.log(k);
+        var cat = sortedCats[i];
+        var cat_Y_axis = getOccurrencesForCategory(cat);  
+        var colorName = colorNames[config.data.datasets.length % colorNames.length];
+        var newColor = window.chartColors[colorName];
+        var newDataset = {
+            label : cat,
+            backgroundColor: newColor,
+            borderColor: newColor,
+            data : cat_Y_axis,
+            fill: false
+        };
+        config.data.datasets.push(newDataset);
+    }
+    window.myChart = new Chart(ctx, config);
+    window.myChart.update();
+    
+    
+}
+
+function getOccurrencesForCategory(cat) {
+    var y_axis = [];
+    for (j = total_X_axis[0]; j < total_X_axis[total_X_axis.length - 1]; j++) {
+        if (yearlyCatData.hasOwnProperty(j.toString()) && 
+            yearlyCatData[j.toString()].hasOwnProperty(cat)) {
+            y_axis.push(parseInt(yearlyCatData[j.toString()][cat]));
+        } else {
+            y_axis.push(0);
+        }
+    }
+    return y_axis;
 }
 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
 //    const search_term = urlParams.get('search');
     const search_term = urlParams.get('search').toLowerCase();
+    const k = urlParams.get('k');
 
     var config = {
         apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
@@ -64,8 +117,6 @@ window.onload = function() {
     };
     firebase.initializeApp(config);
     var database = firebase.database();
-//    var search_term2 = search_term.charAt(0).toUpperCase() + search_term.substr(1);
-//    database.ref('/').orderByChild('name').equalTo(search_term).on("value", function(snapshot) {
     database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
 
         snapshot.forEach(function(child) {
@@ -74,11 +125,38 @@ window.onload = function() {
             var nums = [];
             JSON.parse(raw_data, function(key, value) {
                 if (key) {
-                    labels.push(key);
-                    nums.push(value);
+                    labels.push(parseInt(key));
+                    nums.push(parseInt(value));
                 }
             });
-            loadGraph(labels, nums, child.val()['name']);
+            var min = labels[0];
+            var max = labels[labels.length - 1];
+            var cur = 0;
+            for (i = min; i < max; i++) {
+                total_X_axis.push(i);
+                if (labels.includes(i)) {
+                    total_Y_axis.push(nums[cur]);
+                    cur = cur + 1;
+                } else {
+                    total_Y_axis.push(0);
+                }
+            }
+        
+            // sorts the categories greatest to least on total occurrences 
+            var cat_counts = JSON.parse(child.val()['fields'].replaceAll("'", '"'));
+            var items = Object.keys(cat_counts).map(function(key) {
+                return [key, cat_counts[key]];
+            });
+            items.sort(function(t, o) {
+                return parseInt(o[1]) - parseInt(t[1]);
+            });
+            for (i = 0; i < items.length; i++) {
+                sortedCats.push(items[i][0]);
+            }
+            
+            yearlyCatData = JSON.parse(child.val()['fields_by_year'].replaceAll("'", '"'));
+            
+            loadGraph(child.val()['name'], parseInt(k));
         });
     });
 };

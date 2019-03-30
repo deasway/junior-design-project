@@ -56,7 +56,9 @@
         <input id="myInput" type="text" name="search" placeholder="Search for..." pattern="^[a-zA-Z0-9-() ]*$" class="search__field" minlength="2" oninvalid="this.setCustomValidity('Words should be at least 2 characters. Uppercase and Lowercase alphabets, numbers, and ()- are allowed characters.')"
                onchange="try{setCustomValidity('')}catch(e){}"
                oninput="setCustomValidity(' ')">
+        <input type="hidden" name="k" value="2">
         <button type="submit" class="fa fa-search search__icon"></button>
+        
     </div>
 </form>
 
