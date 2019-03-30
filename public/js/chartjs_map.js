@@ -75,6 +75,9 @@ function loadGraph(raw_data, term, k){
             i++;
 
             config.data.datasets[0].data[0] -= parseInt(value);
+            if (config.data.datasets[0].data[0] < 0) {
+                config.data.datasets[0].data[0] = 0;
+            }
         } 
     }
     console.log(config.data.datasets);

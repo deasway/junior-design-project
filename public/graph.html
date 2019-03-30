@@ -7,6 +7,7 @@
         <meta name="description" content="SDP proof of concept prototype">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/search_results.css">
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
@@ -33,6 +34,7 @@
                         <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
                         <li><a href="searchAmp.html">Search Amplitude</a></li>
                         <li><a href="searchMap.html">Search Map</a></li>
+                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
@@ -42,6 +44,23 @@
                 <canvas id="myChart"></canvas>
             </div>
         </div>
-        
+        <div id="options-section", style="text-align: center">
+            <ul>
+                <li><div id="start-year", class="option-field">
+                    <p>Start Year:</p>
+                    <select id="start-year-select", title="Start Year"></select>
+                    </div> </li>
+                <li><div id="end-year", class="option-field">
+                    <p>End Year:</p>
+                    <select id="end-year-select",title = "End Year"></select>
+                </div> </li>
+                <li> <div id="k", class="option-field">
+                    <p>Show K Most Common Subfields </p>
+                    <select id="k-select", title=""></select>
+                    </div></li>
+                <li>
+                <button id="process-button">Process</button></li>
+            </ul>
+        </div>
     </body>
 </html>

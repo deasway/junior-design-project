@@ -1,0 +1,27 @@
+ul {
+    list-style: none;
+    display:inline;
+    margin: 0 auto;
+    text-align: center;
+    width: inherit;
+    height: inherit;
+}
+
+li {
+    display: inline;
+}
+
+#options-section {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.option-field {
+    width: 30%;
+}
+
+.chart-container {
+  display: block;
+  margin: 0 auto;
+}
