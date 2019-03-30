@@ -110,8 +110,8 @@ function getOccurrencesForCategory(cat) {
 }
 
 window.onload = function() {
+    
     const urlParams = new URLSearchParams(window.location.search);
-//    const search_term = urlParams.get('search');
     const search_term = urlParams.get('search').toLowerCase();
     const k = urlParams.get('k');
     currentK = parseInt(k);
@@ -129,6 +129,8 @@ window.onload = function() {
     database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
 
         snapshot.forEach(function(child) {
+            let date = child.val()['first_date'];
+            document.getElementById("dateOrigin").innerText = "Date of Entrace: " + date
             var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
