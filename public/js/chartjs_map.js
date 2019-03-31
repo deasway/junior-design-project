@@ -51,7 +51,7 @@ function loadGraph(raw_data, term, k){
 
         // Configuration options go here
         options: {
-            responsive: false,
+            responsive: true,
             title: {
                 display: true,
                 text: "Results for " + term,

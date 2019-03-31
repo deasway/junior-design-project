@@ -108,6 +108,11 @@ function loadGraph(term, k, entryDate){
             }
         }
     };
+    if (parseInt(entryDate) < total_X_axis[0] || parseInt(entryDate) > total_X_axis[total_X_axis.length - 1]) {
+        config.lineAtIndex = [];
+    }    
+    
+    
     for (i = 0; i < k; i++) {
         if (i >= sortedCats.length) {
             break;
