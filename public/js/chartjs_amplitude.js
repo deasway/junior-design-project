@@ -247,52 +247,16 @@ window.onload = function() {
 
 
 function updateGraph(term, k, entryDate) {
-    config = {
-        lineAtIndex: [total_X_axis.indexOf(parseInt(entryDate))],
-        type: 'line',
-        // Dataset to display
-        data: {
-            labels: total_X_axis,
-            datasets: [{
-                label: "Total Occurrences",
-                lineTension: 0,
-                fill: false,
-                data: total_Y_axis,
-                backgroundColor: 'rgba(255, 99, 132,0.1)',
-                borderColor: 'rgb(255, 99, 132)',
-            }]
-        },
+    const chart = window.myChart;
+    chart.data.datasets = [{
+        label: "Total Occurrences",
+        lineTension: 0,
+        fill: false,
+        data: total_Y_axis,
+        backgroundColor: 'rgba(255, 99, 132,0.1)',
+        borderColor: 'rgb(255, 99, 132)',
+    }];
 
-        // Configuration options go here
-        options: {
-            title: {
-                display: true,
-                text: "Results for " + term,
-                fontSize: 24
-            },
-            responsive: true,
-            legend: {
-                display: true
-            },
-            elements: {
-                point: {
-                    radius: 1,
-                    hitRadius: 10,
-                    borderWidth: 3,
-                    hoverRadius: 8,
-                }
-            },
-            scales: {
-                yAxes: [{
-                    stacked: false
-                }]
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            }
-        }
-    };
     for (i = 0; i < k; i++) {
         if (i >= sortedCats.length) {
             break;
@@ -311,8 +275,5 @@ function updateGraph(term, k, entryDate) {
         };
         config.data.datasets.push(newDataset);
     }
-    window.myChart.destroy();
-    var ctx = document.getElementById('myChart').getContext('2d')
-    window.myChart = new Chart(ctx, config);
     window.myChart.update();
 }
