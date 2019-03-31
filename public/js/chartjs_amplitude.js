@@ -49,7 +49,7 @@ function loadGraph(term, k, entryDate){
             // write label
             context.fillStyle = lineColor;
             context.textAlign = 'center';
-            context.fillText('Word Enters Lexicon ('+entryDate+')', lineLeftOffset, scale.top - 12);
+            context.fillText('Word Enters SF Lexicon ('+entryDate+')', lineLeftOffset, scale.top - 12);
         },
 
         afterDatasetsDraw: function (chart, easing) {
