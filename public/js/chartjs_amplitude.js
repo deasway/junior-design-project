@@ -12,6 +12,7 @@ var currentK = 0;
 var config = null;
 var min = 0;
 var max = 0;
+var date;
 
 window.chartColors = {
 	red: 'rgb(255, 99, 132)',
@@ -25,9 +26,43 @@ window.chartColors = {
 window.myChart = null;
 var colorNames = Object.keys(window.chartColors);
 
-function loadGraph(term, k){
+function loadGraph(term, k, entryDate){
+    const verticalLinePlugin = {
+        getLinePosition: function (chart, pointIndex) {
+            const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
+            const data = meta.data;
+            return data[pointIndex]._model.x;
+        },
+        renderVerticalLine: function (chartInstance, pointIndex) {
+            const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex);
+            const scale = chartInstance.scales['y-axis-0'];
+            const context = chartInstance.chart.ctx;
+            const lineColor = "black";
+
+            // render vertical line
+            context.beginPath();
+            context.strokeStyle = lineColor;
+            context.moveTo(lineLeftOffset, scale.top);
+            context.lineTo(lineLeftOffset, scale.bottom);
+            context.stroke();
+
+            // write label
+            context.fillStyle = lineColor;
+            context.textAlign = 'center';
+            context.fillText('Word Enters Lexicon ('+entryDate+')', lineLeftOffset, scale.top - 12);
+        },
+
+        afterDatasetsDraw: function (chart, easing) {
+            if (chart.config.lineAtIndex) {
+                chart.config.lineAtIndex.forEach(pointIndex => this.renderVerticalLine(chart, pointIndex));
+            }
+        }
+    };
+
+    Chart.plugins.register(verticalLinePlugin);
     var ctx = document.getElementById('myChart').getContext('2d');
     config = {
+        lineAtIndex: [total_X_axis.indexOf(parseInt(entryDate))],
         type: 'line',
         // Dataset to display
         data: {
@@ -130,7 +165,7 @@ window.onload = function() {
 
         snapshot.forEach(function(child) {
             let date = child.val()['first_date'];
-            document.getElementById("dateOrigin").innerText = "Date of Entrace: " + date
+            document.getElementById("dateOrigin").innerText = "Date of Entrance: " + date;
             var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
@@ -183,7 +218,7 @@ window.onload = function() {
                 option.text = i + 1;
                 k_select.add(option);
             }
-            loadGraph(child.val()['name'], parseInt(k));
+            loadGraph(child.val()['name'], parseInt(k), date);
         });
     });
     
@@ -192,7 +227,7 @@ window.onload = function() {
             var endYear = parseInt(document.getElementById("end-year-select").value);
             var k_selected = parseInt(document.getElementById("k-select").value);
             
-            updateGraph(config.options.title.text, k_selected);
+            updateGraph(config.options.title.text, k_selected, date);
             if (startYear >= endYear) {
                 startYear = min;
                 endYear = max;
@@ -211,8 +246,9 @@ window.onload = function() {
 
 
 
-function updateGraph(term, k) {
+function updateGraph(term, k, entryDate) {
     config = {
+        lineAtIndex: [total_X_axis.indexOf(parseInt(entryDate))],
         type: 'line',
         // Dataset to display
         data: {
