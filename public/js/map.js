@@ -1,4 +1,5 @@
 var names = [];
+var firstClick = 1;
 
 window.onload = function() {
     var config = {
@@ -74,11 +75,23 @@ $('#search_form').validator().on('submit', function (e) {
 })
  **/
 
+$(function myFunction() {
+    $('.search__field').on("focus", function () {
+        if (firstClick == 1) {
+            firstClick = 0;
+            $(".search__field").css({"border": "2px solid #ccc", "border-radius" : "30px;", "width": "50vw", "color" : "#2b2b2b", "cursor" : "default"});
+            $(".search__icon").css({"background-color": "transparent", "cursor": "pointer", "pointer-events": "auto"});
+        }
+    });
+});
+
+
 function validate() {
     names;
     var inpObj = (document.getElementById('myInput').value);
     var in_array = jQuery.inArray(inpObj.toLowerCase(), names);
     if (in_array == -1) {
+        $('.search__field').css({"border": "2px solid red"});
         alert("No Result Found");
         document.getElementById("alert2").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
         return false;
