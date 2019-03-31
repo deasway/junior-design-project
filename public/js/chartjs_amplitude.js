@@ -86,7 +86,8 @@ function loadGraph(term, k, entryDate){
             },
             responsive: true,
             legend: {
-                display: true
+                display: true,
+                position: 'bottom'
             },
             elements: {
                 point: {
@@ -165,7 +166,6 @@ window.onload = function() {
 
         snapshot.forEach(function(child) {
             date = child.val()['first_date'];
-            document.getElementById("dateOrigin").innerText = "Date of Entrance: " + date;
             var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
             var nums = [];
@@ -227,6 +227,10 @@ window.onload = function() {
             var endYear = parseInt(document.getElementById("end-year-select").value);
             var k_selected = parseInt(document.getElementById("k-select").value);
 
+            if (startYear >= endYear) {
+                startYear = min;
+                endYear = max;
+            }
             if (parseInt(date) < startYear || parseInt(date) > endYear) {
                 window.myChart.config.lineAtIndex = [];
             } else {
@@ -234,10 +238,7 @@ window.onload = function() {
             }
 
             updateGraph(config.options.title.text, k_selected);
-            if (startYear >= endYear) {
-                startYear = min;
-                endYear = max;
-            }
+
 
 
             var start_ind = total_X_axis.indexOf(startYear);

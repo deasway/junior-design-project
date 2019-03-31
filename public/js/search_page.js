@@ -61,12 +61,6 @@ window.onload = function() {
     return;
 } 
 
-// <a href="/wiki/Alice_Margatroid" title="Patchy" class="category-page__member-link">Patchy knows</a>
-//    <div class="category-page__first-char">A</div>
-//    <ul class="category-page__members-for-char">
-//        <li class = "category-page__member">
-//        </li>
-//    </ul>
 
 function dataPush(term) {
     //names = [];
