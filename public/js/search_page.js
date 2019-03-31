@@ -35,7 +35,7 @@ window.onload = function() {
                 
                 new_link = document.createElement("a");
                 new_link.className = "category-page__member-link";
-                new_link.href = "/graph.html?search=" + a + "&k=2";
+                new_link.href = "/graph.html?search=" + a + "&k=0";
                 new_link.title = a;
                 new_link.innerText = a;
                 
@@ -48,7 +48,7 @@ window.onload = function() {
                 
                 new_link = document.createElement("a");
                 new_link.className = "category-page__member-link";
-                new_link.href = "/graph.html?search=" + a + "&k=2";
+                new_link.href = "/graph.html?search=" + a + "&k=0";
                 new_link.title = a;
                 new_link.innerText = a;
                 
