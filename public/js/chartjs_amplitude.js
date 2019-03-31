@@ -230,7 +230,7 @@ window.onload = function() {
             if (parseInt(date) < startYear || parseInt(date) > endYear) {
                 window.myChart.config.lineAtIndex = [];
             } else {
-                window.myChart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date))];
+                window.myChart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date)) - total_X_axis.indexOf(startYear)];
             }
 
             updateGraph(config.options.title.text, k_selected);
