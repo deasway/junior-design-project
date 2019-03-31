@@ -164,7 +164,7 @@ window.onload = function() {
     database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
 
         snapshot.forEach(function(child) {
-            let date = child.val()['first_date'];
+            date = child.val()['first_date'];
             document.getElementById("dateOrigin").innerText = "Date of Entrance: " + date;
             var raw_data = child.val()['occurrences'].replaceAll("'", '"');
             var labels = [];
@@ -226,12 +226,20 @@ window.onload = function() {
             var startYear = parseInt(document.getElementById("start-year-select").value);
             var endYear = parseInt(document.getElementById("end-year-select").value);
             var k_selected = parseInt(document.getElementById("k-select").value);
-            
-            updateGraph(config.options.title.text, k_selected, date);
+
+            if (parseInt(date) < startYear || parseInt(date) > endYear) {
+                window.myChart.config.lineAtIndex = [];
+            } else {
+                window.myChart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date))];
+            }
+
+            updateGraph(config.options.title.text, k_selected);
             if (startYear >= endYear) {
                 startYear = min;
                 endYear = max;
             }
+
+
             var start_ind = total_X_axis.indexOf(startYear);
             var end_ind = total_X_axis.indexOf(endYear);
             
@@ -246,8 +254,9 @@ window.onload = function() {
 
 
 
-function updateGraph(term, k, entryDate) {
+function updateGraph(term, k) {
     const chart = window.myChart;
+
     chart.data.datasets = [{
         label: "Total Occurrences",
         lineTension: 0,
@@ -262,7 +271,7 @@ function updateGraph(term, k, entryDate) {
             break;
         }
         var cat = sortedCats[i];
-        var cat_Y_axis = getOccurrencesForCategory(cat);  
+        var cat_Y_axis = getOccurrencesForCategory(cat);
         var colorName = colorNames[config.data.datasets.length % colorNames.length];
         var newColor = window.chartColors[colorName];
         var newDataset = {
