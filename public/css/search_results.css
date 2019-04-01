@@ -14,7 +14,7 @@ li {
 
 #options-section {
     display: block;
-    margin: 100px auto;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -36,5 +36,5 @@ p {
 
 select {
     display: inline;
-    margin 0 0 35px;
+    margin: 0 0 35px;
 }
