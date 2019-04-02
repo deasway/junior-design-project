@@ -82,7 +82,8 @@ function loadGraph(term, k, entryDate){
             title: {
                 display: true,
                 text: "Results for " + term,
-                fontSize: 24
+                fontSize: 24,
+
             },
             responsive: true,
             legend: {
