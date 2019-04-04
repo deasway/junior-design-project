@@ -147,12 +147,15 @@ window.onload = function() {
                     option.value = i;
                     end_year_select.add(option);
                 }
+                $("#end-year-select").val(max);
                 var k_select = document.getElementById("k-select");
                 for (i = -1; i < Object.keys(cat_counts).length; i++) {
                     var option = document.createElement("option");
                     option.text = i + 1;
+                    option.value = i + 1;
                     k_select.add(option);
                 }
+                $("#k-select").val(k);
 
 
             }
