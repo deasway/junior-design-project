@@ -5,13 +5,33 @@ String.prototype.replaceAll = function(search, replacement) {
 
 // basic clor definitions
 window.chartColors = {
-	red: 'rgb(255, 99, 132)',
-	orange: 'rgb(255, 159, 64)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(75, 192, 192)',
-	blue: 'rgb(54, 162, 235)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    a: '#1f77b4',
+    b: '#d62728',
+    c: '#ff7f0e',
+    d: '#ffbb78',
+    e: '#2ca02c',
+    f: '#98df8a',
+    g: '#aec7e8',
+    h: '#ff9896',
+    i: '#9467bd',
+    j: '#c5b0d5',
+    k: '#8c564b',
+    l: '#c49c94',
+    m: '#e377c2',
+    n: '#f7b6d2',
+    o: '#7f7f7f',
+    p: '#c7c7c7',
+    q: '#bcbd22',
+    r: '#dbdb8d',
+    s: '#17becf',
+    t: '#9edae5',
+    grey: 'rgb(201, 203, 207)',
 };
 
 var yearlyCatData = null;
@@ -214,18 +234,17 @@ $(function updateDropdown () {
 
 
 
-function updateGraph(raw_data, term, k){
+function updateGraph(temp_data, term, k){
     // sort k-num
     if (myChart) {
         myChart.destroy();
     }
     var data_map = new Map();
-
-    Object.keys(raw_data).forEach(function (key, value) {
-        if (key) {
-            data_map.set(key, value);
+    for (var key in temp_data) {
+        if (temp_data.hasOwnProperty(key)) {
+            data_map.set(key, temp_data[key]);
         }
-    });
+    }
 
     // sort data
     data_map[Symbol.iterator] = function* () {
@@ -281,7 +300,7 @@ function updateGraph(raw_data, term, k){
             }
         }
     }
-    console.log(config.data.datasets);
+    //console.log(config.data.datasets);
     myChart = new Chart(ctx, config);
 
 }

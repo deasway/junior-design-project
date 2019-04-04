@@ -611,3 +611,40 @@ Try running "npm install" in your functions directory before deploying.
 [info] ✔  hosting: Local server: http://localhost:5000
 [debug] [2019-04-04T13:36:58.555Z] Parsing function triggers
 [info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+[debug] [2019-04-04T21:39:22.321Z] ----------------------------------------------------------------------
+[debug] [2019-04-04T21:39:22.323Z] Command:       /usr/local/Cellar/node/11.10.0/bin/node /usr/local/bin/firebase serve
+[debug] [2019-04-04T21:39:22.323Z] CLI Version:   6.4.0
+[debug] [2019-04-04T21:39:22.323Z] Platform:      darwin
+[debug] [2019-04-04T21:39:22.323Z] Node Version:  v11.10.0
+[debug] [2019-04-04T21:39:22.324Z] Time:          Thu Apr 04 2019 17:39:22 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-04-04T21:39:22.324Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-04-04T21:39:22.329Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-04-04T21:39:22.330Z] > authorizing via signed-in user
+[debug] [2019-04-04T21:39:22.330Z] [iam] checking project junior-design-project for permissions ["firebase.projects.get"]
+[debug] [2019-04-04T21:39:22.331Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-04-04T21:39:22.331Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-04-04T21:39:23.501Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T21:39:23.514Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project:testIamPermissions  
+
+[debug] [2019-04-04T21:39:23.734Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T21:39:23.735Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/junior-design-project  
+ 
+[debug] [2019-04-04T21:39:23.928Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/dasomeom/GitHub/junior-design-project'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-04-04T21:39:24.246Z] Fetching environment
+[debug] [2019-04-04T21:39:24.248Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667:getServerAppConfig  
+ 
+[debug] [2019-04-04T21:39:24.248Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/986723685667/clients/_:getWebAppConfig  
+ 
+[debug] [2019-04-04T21:39:24.545Z] <<< HTTP RESPONSE 200
+[debug] [2019-04-04T21:39:24.546Z] Starting @google-cloud/functions-emulator
+[debug] [2019-04-04T21:39:24.689Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-04-04T21:39:25.581Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
