@@ -2,40 +2,6 @@ html {
     font-family:sans-serif;
 }
 
-/*ul {*/
-    /*list-style-type: none;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*overflow: hidden;*/
-    /*background-color: #333;*/
-/*}*/
-
-/*li {*/
-    /*display: inline-flex;*/
-/*}*/
-
-/*a {*/
-    /*display: block;*/
-    /*height:auto;*/
-    /*color: white;*/
-    /*text-align: center;*/
-    /*font-size: 24px;*/
-    /*padding: 25px; 50%;*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*p {*/
-    /*display: block;*/
-    /*color: white;*/
-    /*height: inherit;*/
-    /*font-size:34px;*/
-    /*padding-left: 10px;*/
-    /*text-align: center;*/
-/*}*/
-/*!* Change the link color to #111 (black) on hover *!*/
-/*li a:hover {*/
-    /*background-color: #111;*/
-/*}*/
 
 .search-elements {
     display: block;
@@ -232,5 +198,48 @@ html {
 
 .chart-container {
   display: block;
+  height: 1000px;
   margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0 auto;
+  /*
+      text-align: center;
+      width: inherit;
+      height: inherit;
+  */
+}
+
+li {
+  display: inline;
+}
+
+#options-section {
+  display: block;
+  margin-top: -10px;
+  margin-bottom: -15px;
+  width: 100%;
+}
+
+.option-field {
+  width: 30%;
+  display: inline;
+  margin: 0 60px;
+}
+
+.chart-container {
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+  display: inline;
+  margin: 0 0 35px;
+}
+
+select {
+  display: inline;
+  margin: 0 0 35px;
 }

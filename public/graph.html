@@ -12,6 +12,9 @@
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="js/chartjs_amplitude.js"></script>
     </head>
     <body>
@@ -39,24 +42,24 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        <div style="text-align: center">
-            <div class="chart-container" >
-                <canvas id="myChart"></canvas>
-            </div>
+
+        <div class="chart-container">
+            <canvas id="myChart" style="width: 50%"></canvas>
         </div>
-        <div id="options-section", style="text-align: center">
+
+        <div id="options-section" style="text-align: center">
             <ul>
-                <li><div id="start-year", class="option-field">
+                <li><div id="start-year" class="option-field">
                     <p>Start Year:</p>
-                    <select id="start-year-select", title="Start Year"></select>
+                    <select id="start-year-select" title="Start Year"></select>
                     </div> </li>
-                <li><div id="end-year", class="option-field">
+                <li><div id="end-year" class="option-field">
                     <p>End Year:</p>
-                    <select id="end-year-select",title = "End Year"></select>
+                    <select id="end-year-select" title = "End Year"></select>
                 </div> </li>
-                <li> <div id="k", class="option-field">
+                <li> <div id="k" class="option-field">
                     <p>Show K Most Common Subfields </p>
-                    <select id="k-select", title=""></select>
+                    <select id="k-select" title=""></select>
                     </div></li>
                 <li>
                 <button id="process-button">Process</button></li>
