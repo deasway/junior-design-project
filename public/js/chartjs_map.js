@@ -88,8 +88,8 @@ function loadGraph(raw_data, term, k){
             responsive: true,
             title: {
                 display: true,
-                text: "Results for " + term,
-                fontSize: 24
+                text: "Results for " + term.toUpperCase(),
+                fontSize: 25
             },
 
             legend: {
