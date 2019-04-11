@@ -2,15 +2,15 @@ var names = [];
 var firstClick = 1;
 
 window.onload = function() {
-    var config = {
-        apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
-        authDomain: "junior-design-project.firebaseapp.com",
-        databaseURL: "https://junior-design-project.firebaseio.com",
-        projectId: "junior-design-project",
-        storageBucket: "junior-design-project.appspot.com",
-        messagingSenderId: "986723685667"
-    };
-    firebase.initializeApp(config);
+      var config = {
+        apiKey: "AIzaSyB-Hrepj-ywDEoUIao6sVrH0UykxvcuXuw",
+        authDomain: "space-force-dinos.firebaseapp.com",
+        databaseURL: "https://space-force-dinos.firebaseio.com",
+        projectId: "space-force-dinos",
+        storageBucket: "space-force-dinos.appspot.com",
+        messagingSenderId: "590463825386"
+      };
+      firebase.initializeApp(config);
     var database = firebase.database();
     database.ref('/').orderByChild('sorting_name').on("value", function(snapshot) {
         snapshot.forEach(function(child) {

@@ -5,21 +5,22 @@ var firstClick = 1;
 window.onload = function() {
     var toc = document.getElementById("category-page__members-div");
 
-    var config = {
-        apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
-        authDomain: "junior-design-project.firebaseapp.com",
-        databaseURL: "https://junior-design-project.firebaseio.com",
-        projectId: "junior-design-project",
-        storageBucket: "junior-design-project.appspot.com",
-        messagingSenderId: "986723685667"
-    };
-    firebase.initializeApp(config);
+//    var config = {
+//        apiKey: "AIzaSyB-Hrepj-ywDEoUIao6sVrH0UykxvcuXuw",
+//        authDomain: "space-force-dinos.firebaseapp.com",
+//        databaseURL: "https://space-force-dinos.firebaseio.com",
+//        projectId: "space-force-dinos",
+//        storageBucket: "space-force-dinos.appspot.com",
+//        messagingSenderId: "590463825386"
+//    };
+//    firebase.initializeApp(config);
+    
     var database = firebase.database();
-    database.ref('/').orderByChild('sorting_name').on("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            a = child.val()['name'];
-            dataPush(a);
-            let firstChar = a.charAt(0).toUpperCase();
+    database.ref('/term_names').once('value').then(function(snapshot) { 
+        let terms = snapshot.val();
+        names = terms;
+        for (i in terms) { 
+            let firstChar = i.charAt(0).toUpperCase();
             if (!seen.has(firstChar)) {
                 seen.add(firstChar);
                 new_heading = document.createElement("div");
@@ -36,9 +37,9 @@ window.onload = function() {
 
                 new_link = document.createElement("a");
                 new_link.className = "category-page__member-link";
-                new_link.href = "/graph.html?search=" + a + "&k=2";
-                new_link.title = a;
-                new_link.innerText = a;
+                new_link.href = "/graph.html?search=" + i + "&k=2";
+                new_link.title = terms[i];
+                new_link.innerText = terms[i];
 
                 new_entry.appendChild(new_link);
                 new_list.appendChild(new_entry);
@@ -49,15 +50,15 @@ window.onload = function() {
 
                 new_link = document.createElement("a");
                 new_link.className = "category-page__member-link";
-                new_link.href = "/graph.html?search=" + a + "&k=2";
-                new_link.title = a;
-                new_link.innerText = a;
+                new_link.href = "/graph.html?search=" + i + "&k=2";
+                new_link.title = terms[i];
+                new_link.innerText = terms[i];
 
                 new_entry.appendChild(new_link);
                 new_list.appendChild(new_entry);
                 document.getElementById("category-page__members-for-char-" + firstChar).childNodes[0].appendChild(new_entry);
             }
-        });
+        }
     });
     return;
 }

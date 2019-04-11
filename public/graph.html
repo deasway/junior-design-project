@@ -10,11 +10,22 @@
         <link rel="stylesheet" href="css/search_results.css">
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+        <script>
+          var config = {
+            apiKey: "AIzaSyB-Hrepj-ywDEoUIao6sVrH0UykxvcuXuw",
+            authDomain: "space-force-dinos.firebaseapp.com",
+            databaseURL: "https://space-force-dinos.firebaseio.com",
+            projectId: "space-force-dinos",
+            storageBucket: "space-force-dinos.appspot.com",
+            messagingSenderId: "590463825386"
+          };
+          firebase.initializeApp(config);
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
         <script type="text/javascript" src="js/chartjs_amplitude.js"></script>
     </head>
     <body>

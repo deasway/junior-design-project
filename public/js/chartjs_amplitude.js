@@ -158,44 +158,38 @@ window.onload = function() {
     const k = urlParams.get('k');
     currentK = parseInt(k);
 
-    var firebase_config = {
-        apiKey: "AIzaSyBXViFaFbggSb0QqB1QwmAtuE3XO545NF0",
-        authDomain: "junior-design-project.firebaseapp.com",
-        databaseURL: "https://junior-design-project.firebaseio.com",
-        projectId: "junior-design-project",
-        storageBucket: "junior-design-project.appspot.com",
-        messagingSenderId: "986723685667"
-    };
-    firebase.initializeApp(firebase_config);
     var database = firebase.database();
-    database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
+    database.ref('/occurrences/' + search_term).once('value').then(function(snapshot) { 
+        var occurrences = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
+        var labels = [];
+        var nums = [];
+        Object.keys(occurrences).sort().forEach(function(key) {
 
-        snapshot.forEach(function(child) {
-            date = child.val()['first_date'];
-            var raw_data = child.val()['occurrences'].replaceAll("'", '"');
-            var labels = [];
-            var nums = [];
-            JSON.parse(raw_data, function(key, value) {
-                if (key) {
-                    labels.push(parseInt(key));
-                    nums.push(parseInt(value));
-                }
-            });
-            min = labels[0];
-            max = labels[labels.length - 1];
-            var cur = 0;
-            for (i = min; i <= max; i++) {
-                total_X_axis.push(i);
+            labels.push(parseInt(key));
+            nums.push(parseInt(occurrences[key]));
+        });
+        min = labels[0];
+        max = labels[labels.length - 1];
+        var cur = 0;
+        for (i = min; i <= max; i++) {
+            total_X_axis.push(i);
                 if (labels.includes(i)) {
                     total_Y_axis.push(nums[cur]);
                     cur = cur + 1;
                 } else {
                     total_Y_axis.push(0);
                 }
-            }
-
+        }
+    });
+    database.ref('/origins/' + search_term).once('value').then(function(snapshot) {
+        date = snapshot.val()['brave'];
+    });
+               
+    database.ref('/fields/' + search_term).once('value').then(function(snapshot) {
+            var cat_counts = JSON.parse(snapshot.val()['total'].replaceAll("'",'"'));
+            yearlyCatData = JSON.parse(snapshot.val()['by_year'].replaceAll("'",'"'));
+        
             // sorts the categories greatest to least on total occurrences
-            var cat_counts = JSON.parse(child.val()['fields'].replaceAll("'", '"'));
             var items = Object.keys(cat_counts).map(function(key) {
                 return [key, cat_counts[key]];
             });
@@ -205,8 +199,6 @@ window.onload = function() {
             for (i = 0; i < items.length; i++) {
                 sortedCats.push(items[i][0]);
             }
-
-            yearlyCatData = JSON.parse(child.val()['fields_by_year'].replaceAll("'", '"'));
 
             var start_year_select = document.getElementById("start-year-select");
             var end_year_select = document.getElementById("end-year-select");
@@ -230,8 +222,7 @@ window.onload = function() {
                 k_select.add(option);
             }
             $("#k-select").val(k);
-            loadGraph(child.val()['name'], parseInt(k), date);
-        });
+            loadGraph(search_term, parseInt(k), date);
     });
 
     document.getElementById('process-button').addEventListener('click', function() {
