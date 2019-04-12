@@ -188,9 +188,9 @@ window.onload = function() {
         temp_data = {};
         temp = {};
         temp_total = 0;
-        Object.keys(yearlyCatData).forEach(function (key) {
+        Object.keys(tempYears).forEach(function (key) {
             if (parseInt(key) >= startYear && parseInt(key) <= endYear) {
-                temp = (yearlyCatData[key]);
+                temp = (tempYears[key]);
                 putData(temp);
             }
         });

@@ -16,10 +16,12 @@ window.onload = function() {
 //    firebase.initializeApp(config);
     
     var database = firebase.database();
-    database.ref('/term_names').once('value').then(function(snapshot) { 
-        let terms = snapshot.val();
-        names = terms;
-        for (i in terms) { 
+    database.ref('/term_names').once('value').then(function(snapshot) {
+        terms = snapshot.val();
+        for (var i = 0; i < Object.keys(terms).length; i++) {
+            dataPush(Object.values(terms)[i]);
+        }
+        for (i in terms) {
             let firstChar = i.charAt(0).toUpperCase();
             if (!seen.has(firstChar)) {
                 seen.add(firstChar);
