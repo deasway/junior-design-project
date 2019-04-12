@@ -12,16 +12,14 @@ window.onload = function() {
       };
       firebase.initializeApp(config);
     var database = firebase.database();
-    database.ref('/').orderByChild('sorting_name').on("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            a = child.val()['name'];
+
+
+    database.ref('/term_names').once('value').then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            a = childSnapshot.val();
             dataPush(a);
         });
-
     });
-
-
-
 };
 
 function dataPush(term) {

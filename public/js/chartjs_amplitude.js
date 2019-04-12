@@ -13,6 +13,7 @@ var config = null;
 var min = 0;
 var max = 0;
 var date;
+var aTerm = "";
 
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -81,7 +82,7 @@ function loadGraph(term, k, entryDate){
         options: {
             title: {
                 display: true,
-                text: "Results for " + term,
+                text: "Results for " + aTerm,
                 fontSize: 24,
 
             },

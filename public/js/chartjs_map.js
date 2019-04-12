@@ -42,11 +42,14 @@ var years = [];
 var temp_data = {};
 var name;
 var raw_data = {};
+var yearlyData = {};
+var labels = [];
+var nums = [];
 var temp = {};
 var myChart;
 var min = 0;
 var max = 0;
-
+var tempYears = {};
 
 
 function loadGraph(raw_data, term, k){
@@ -121,9 +124,10 @@ function loadGraph(raw_data, term, k){
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     const search_term = urlParams.get('search').toLowerCase();
-    const k = parseInt(urlParams.get('k'));
-    //console.log(search_term);
-      var config = {
+    const k = urlParams.get('k');
+    currentK = parseInt(k);
+
+    var config = {
         apiKey: "AIzaSyB-Hrepj-ywDEoUIao6sVrH0UykxvcuXuw",
         authDomain: "space-force-dinos.firebaseapp.com",
         databaseURL: "https://space-force-dinos.firebaseio.com",
@@ -131,58 +135,49 @@ window.onload = function() {
         storageBucket: "space-force-dinos.appspot.com",
         messagingSenderId: "590463825386"
       };
-      firebase.initializeApp(config);
+    firebase.initializeApp(config);
     var database = firebase.database();
-
-
-    database.ref('/').orderByChild('sorting_name').equalTo(search_term).on("value", function(snapshot) {
-        snapshot.forEach(function(child) {
-            var cat_counts = JSON.parse(child.val()['fields'].replaceAll("'", '"'));
-            var occurrences = child.val()['occurrences'].replaceAll("'", '"');
-            var labels = [];
-            var nums = [];
-            JSON.parse(occurrences, function(key, value) {
-                if (key) {
-                    labels.push(parseInt(key));
-                    nums.push(parseInt(value));
-                }
-            });
-            min = labels[0];
-            max = labels[labels.length - 1];
-
-            raw_data = child.val()['fields'].replaceAll("'", '"');
-            total_occurrences = parseInt(child.val()['num_total']);
-            yearlyCatData = JSON.parse(child.val()['fields_by_year'].replaceAll("'", '"'));
-            if (yearlyCatData != null) {
-
-                var start_year_select = document.getElementById("start-year-select");
-                var end_year_select = document.getElementById("end-year-select");
-                for (i = min; i <= max; i++) {
-                    var option = document.createElement("option");
-                    option.text = i;
-                    option.value = i;
-                    start_year_select.add(option);
-                    var option = document.createElement("option");
-                    option.text = i;
-                    option.value = i;
-                    end_year_select.add(option);
-                }
-                $("#end-year-select").val(max);
-                var k_select = document.getElementById("k-select");
-                for (i = -1; i < Object.keys(cat_counts).length; i++) {
-                    var option = document.createElement("option");
-                    option.text = i + 1;
-                    option.value = i + 1;
-                    k_select.add(option);
-                }
-                $("#k-select").val(k);
-
-
+    database.ref('/fields/' + search_term).once('value').then(function(snapshot) {
+        raw_data = snapshot.val()['total'].replaceAll("'", '"');
+        yearlyData = snapshot.val()['by_year'];
+        tempYears = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
+        JSON.parse(yearlyData, function(key, value) {
+            if (key) {
+                labels.push(parseInt(key));
+                nums.push(parseInt(value));
             }
-            name = child.val()['name'];
-            loadGraph(raw_data, name, k);
         });
+        min = parseInt(Object.keys(tempYears)[0]);
+        max = parseInt(Object.keys(tempYears)[Object.keys(tempYears).length - 1]);
+        if (Object.keys(tempYears).length != 0) {
+            var start_year_select = document.getElementById("start-year-select");
+            var end_year_select = document.getElementById("end-year-select");
+            for (i = min; i <= max; i++) {
+                var option = document.createElement("option");
+                option.text = i;
+                option.value = i;
+                start_year_select.add(option);
+                var option = document.createElement("option");
+                option.text = i;
+                option.value = i;
+                end_year_select.add(option);
+            }
+            $("#end-year-select").val(max);
+            var k_select = document.getElementById("k-select");
+            for (i = -1; i < Object.keys(raw_data).length; i++) {
+                var option = document.createElement("option");
+                option.text = i + 1;
+                option.value = i + 1;
+                k_select.add(option);
+            }
+            $("#k-select").val(k);
+
+        }
+
+
+        loadGraph(raw_data, search_term, k);
     });
+
 
 
 
