@@ -82,7 +82,7 @@ function loadGraph(term, k, entryDate){
         options: {
             title: {
                 display: true,
-                text: "Results for " + aTerm,
+                text: "Results for " + term,
                 fontSize: 24,
 
             },
@@ -155,6 +155,7 @@ function getOccurrencesForCategory(cat) {
 window.onload = function() {
     
     $.getJSON("https://deasway.github.io/junior-design-project/public/js/resources/term_names/term_names.json"), function(data) {
+        var test_data = data;
         console.log(data);
         console.log("here");
     }
