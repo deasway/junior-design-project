@@ -153,12 +153,6 @@ function getOccurrencesForCategory(cat) {
 }
 
 window.onload = function() {
-    
-    $.getJSON("https://deasway.github.io/junior-design-project/public/js/resources/term_names/term_names.json"), function(data) {
-        var test_data = data;
-        console.log(data);
-        console.log("here");
-    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const search_term = urlParams.get('search').toLowerCase();
