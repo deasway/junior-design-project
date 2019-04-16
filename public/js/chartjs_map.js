@@ -172,10 +172,20 @@ window.onload = function() {
             }
             $("#k-select").val(k);
 
+            temp_data = {};
+            temp = {};
+            temp_total = 0;
+            Object.keys(tempYears).forEach(function (key) {
+                temp = (tempYears[key]);
+                putData(temp);
+
+            });
+            updateGraph(temp_data, name, k);
+
+        } else {
+            loadGraph(raw_data, search_term, k);
         }
 
-
-        loadGraph(raw_data, search_term, k);
     });
 
 
