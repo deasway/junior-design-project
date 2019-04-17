@@ -341,7 +341,6 @@ function updateGraph(term, oldK, k, added_field_index) {
         field_indexes_to_add.push(parseInt(added_field_index));
     }
     field_indexes_to_add.sort();
-    console.log(field_indexes_to_add);
     for (i = 0; i < field_indexes_to_add.length; i++) {
         index = parseInt(field_indexes_to_add[i]);
         if (!used_data_labels.includes(sortedCats[index])) {
