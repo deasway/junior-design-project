@@ -18,6 +18,7 @@ window.onload = function() {
         dataPush(Object.values(terms)[i]);
     }
     for (i in terms) {
+        let term = i;
         let firstChar = i.charAt(0).toUpperCase();
         if (!seen.has(firstChar)) {
             seen.add(firstChar);
@@ -39,7 +40,7 @@ window.onload = function() {
             new_link.title = terms[i];
             new_link.innerText = terms[i];
             new_link.addEventListener("click", function() {
-                document.getElementById("searchAmp_form").myInput.value = i;
+                document.getElementById("searchAmp_form").myInput.value = term;
                 document.getElementById("searchAmp_form").submit();
             });
 
@@ -56,7 +57,7 @@ window.onload = function() {
             new_link.title = terms[i];
             new_link.innerText = terms[i];
             new_link.addEventListener("click", function() {
-                document.getElementById("searchAmp_form").myInput.value = i;
+                document.getElementById("searchAmp_form").myInput.value = term;
                 document.getElementById("searchAmp_form").submit();
             });
             new_entry.appendChild(new_link);
