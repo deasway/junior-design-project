@@ -222,6 +222,20 @@ window.onload = function() {
                 option.value = j;
                 k_select.add(option);
             }
+        
+            var add_field = document.getElementById("add-field");
+            for (i = currentK; i < sortedCats.length; i++) {
+                var option = document.createElement("option");
+                option.text = sortedCats[i];
+                option.value = i;
+                add_field.add(option);
+            }
+            var option = document.createElement("option");
+            option.text = "None";
+            option.value = "None";
+            add_field.add(option);
+        
+            $("#add-field").val("None");
             $("#k-select").val(k);
             loadGraph(search_term, parseInt(k), date);
     });
@@ -229,19 +243,39 @@ window.onload = function() {
     document.getElementById('process-button').addEventListener('click', function() {
         var startYear = parseInt(document.getElementById("start-year-select").value);
         var endYear = parseInt(document.getElementById("end-year-select").value);
-        var k_selected = parseInt(document.getElementById("k-select").value);
-
+        var oldK = currentK;
+        currentK = parseInt(document.getElementById("k-select").value);
+        var add_field = document.getElementById("add-field")
+        var selected_field_index = add_field.options[add_field.selectedIndex].value;
+        
         if (startYear >= endYear) {
             startYear = min;
             endYear = max;
         }
+        
+        for (i = add_field.options.length - 1; i >= 0; i--) {
+            add_field.remove(i);
+        }
+        for (i = currentK; i < sortedCats.length; i++) {
+            var option = document.createElement("option");
+            option.text = sortedCats[i];
+            option.value = i;
+            add_field.add(option);
+        }
+        var option = document.createElement("option");
+        option.text = "None";
+        option.value = "None";
+        add_field.add(option);
+        $("#add-field").val("None");
+        
+        
         if (parseInt(date) < startYear || parseInt(date) > endYear) {
             window.myChart.config.lineAtIndex = [];
         } else {
             window.myChart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date)) - total_X_axis.indexOf(startYear)];
         }
 
-        updateGraph(config.options.title.text, k_selected);
+        updateGraph(config.options.title.text, oldK, currentK, selected_field_index);
 
 
 
@@ -259,9 +293,23 @@ window.onload = function() {
 
 
 
-function updateGraph(term, k) {
+function updateGraph(term, oldK, k, added_field_index) {
     const chart = window.myChart;
-
+    let used_data_labels = [];
+    let field_indexes_to_add = [];
+    
+    for (i = chart.data.datasets.length - 1; i >= 0; i--) {
+        
+        if (i > oldK && chart.getDatasetMeta(i).hidden == true) {
+            chart.data.datasets.splice(i, 1);
+        }
+    }
+    console.log(chart.data.datasets);
+    saved_cats = chart.data.datasets.slice(oldK + 1, chart.data.datasets.length);
+    for (i = 0; i < saved_cats.length; i++) {
+        console.log(saved_cats[i]['label']);
+        field_indexes_to_add.push(sortedCats.indexOf(saved_cats[i]['label']))
+    }
     chart.data.datasets = [{
         label: "Total Occurrences",
         lineTension: 0,
@@ -287,7 +335,31 @@ function updateGraph(term, k) {
             lineTension: 0,
             fill: false
         };
+        used_data_labels.push(cat);
         config.data.datasets.push(newDataset);
+    }
+    
+    if (added_field_index != "None" && !field_indexes_to_add.includes(added_field_index)) {
+        field_indexes_to_add.push(added_field_index);
+    }
+    for (i = 0; i < field_indexes_to_add.length; i++) {
+        index = parseInt(field_indexes_to_add[i]);
+        if (!used_data_labels.includes(sortedCats[index])) {
+            var cat = sortedCats[index];
+            var cat_Y_axis = getOccurrencesForCategory(cat);
+            var colorName = colorNames[config.data.datasets.length % colorNames.length];
+            var newColor = window.chartColors[colorName];
+            var newDataset = {
+                label : cat,
+                backgroundColor: newColor,
+                borderColor: newColor,
+                data : cat_Y_axis,
+                lineTension: 0,
+                fill: false
+            };
+            used_data_labels.push(cat);
+            config.data.datasets.push(newDataset);
+        }
     }
     window.myChart.update();
 }
