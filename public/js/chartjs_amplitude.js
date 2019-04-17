@@ -304,10 +304,8 @@ function updateGraph(term, oldK, k, added_field_index) {
             chart.data.datasets.splice(i, 1);
         }
     }
-    console.log(chart.data.datasets);
     saved_cats = chart.data.datasets.slice(oldK + 1, chart.data.datasets.length);
     for (i = 0; i < saved_cats.length; i++) {
-        console.log(saved_cats[i]['label']);
         field_indexes_to_add.push(sortedCats.indexOf(saved_cats[i]['label']))
     }
     chart.data.datasets = [{
