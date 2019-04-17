@@ -35,9 +35,13 @@ window.onload = function() {
 
             new_link = document.createElement("a");
             new_link.className = "category-page__member-link";
-            new_link.href = "/graph.html?search=" + i + "&k=2";
+            new_link.href = "#";
             new_link.title = terms[i];
             new_link.innerText = terms[i];
+            new_link.addEventListener("click", function() {
+                document.getElementById("searchAmp_form").myInput.value = i;
+                document.getElementById("searchAmp_form").submit();
+            });
 
             new_entry.appendChild(new_link);
             new_list.appendChild(new_entry);
