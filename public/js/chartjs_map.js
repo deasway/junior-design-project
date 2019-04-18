@@ -233,6 +233,25 @@ $(function updateDropdown () {
 
         $("#end-year-select").append(options);
 
+        var tempKArray = [];
+        kList = [];
+        Object.keys(tempYears).forEach(function (key) {
+            if (parseInt(key) >= $("#start-year-select option:selected").val() && parseInt(key) <= $("#end-year-select option:selected").val()) {
+                tempKArray = (tempYears[key]);
+                updatekTemp(tempKArray);
+            }
+        });
+        numK = Object.keys(kList).length;
+
+        $("#k-select").empty();
+        for (i = -1; i < numK; i++) {
+            var option = document.createElement("option");
+            option.text = i + 1;
+            option.value = i + 1;
+            $("#k-select").append(option);
+        }
+        $("#k-select option:last").attr("selected", "selected");
+
 
     });
 });
