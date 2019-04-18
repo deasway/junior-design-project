@@ -14,6 +14,8 @@ var min = 0;
 var max = 0;
 var date;
 var aTerm = "";
+var kList = [];
+var tempYears = {};
 
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -82,7 +84,7 @@ function loadGraph(term, k, entryDate){
         options: {
             title: {
                 display: true,
-                text: "Results for " + term,
+                text: "Results for " + term.toUpperCase(),
                 fontSize: 24,
 
             },
@@ -160,7 +162,7 @@ window.onload = function() {
     currentK = parseInt(k);
 
     var database = firebase.database();
-    database.ref('/occurrences/' + search_term).once('value').then(function(snapshot) { 
+    database.ref('/occurrences/' + search_term).once('value').then(function(snapshot) {
         var occurrences = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
         var labels = [];
         var nums = [];
@@ -361,6 +363,39 @@ function updateGraph(term, oldK, k, added_field_index) {
         }
     }
     window.myChart.update();
+}
+
+
+$(function updateKValue () {
+    $("#end-year-select").change(function (e) {
+        var tempKArray = [];
+        kList = [];
+        Object.keys(yearlyCatData).forEach(function (key) {
+            if (parseInt(key) >= $("#start-year-select option:selected").val() && parseInt(key) <= $("#end-year-select option:selected").val()) {
+                tempKArray = (yearlyCatData[key]);
+                updatekTemp(tempKArray);
+            }
+        });
+        numK = Object.keys(kList).length;
+
+        $("#k-select").empty();
+        for (i = -1; i < numK; i++) {
+            var option = document.createElement("option");
+            option.text = i + 1;
+            option.value = i + 1;
+            $("#k-select").append(option);
+        }
+        $("#k-select option:last").attr("selected", "selected");
+
+    });
+});
+
+function updatekTemp(array) {
+    Object.keys(array).forEach(function (key) {
+        if (kList.includes(key) === false) {
+            kList.push(key);
+        }
+    });
 }
 
 $(function updateDropdown () {

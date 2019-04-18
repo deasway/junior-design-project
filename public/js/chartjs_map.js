@@ -50,6 +50,8 @@ var myChart;
 var min = 0;
 var max = 0;
 var tempYears = {};
+var numK = 0;
+var kList = [];
 
 
 function loadGraph(raw_data, term, k){
@@ -178,17 +180,13 @@ window.onload = function() {
             Object.keys(tempYears).forEach(function (key) {
                 temp = (tempYears[key]);
                 putData(temp);
-
             });
-            updateGraph(temp_data, name, k);
+            updateGraph(temp_data, search_term.toUpperCase(), k);
 
         } else {
-            loadGraph(raw_data, search_term, k);
+            loadGraph(raw_data, search_term.toUpperCase(), k);
         }
-
     });
-
-
 
 
     document.getElementById('process-button').addEventListener('click', function() {
@@ -204,10 +202,12 @@ window.onload = function() {
                 putData(temp);
             }
         });
-
-        updateGraph(temp_data, name, k_selected);
+        if (Object.entries(temp_data).length !== 0) {
+            updateGraph(temp_data, search_term.toUpperCase(), k_selected);
+        } else {
+            alert("No Yearly Data Available");
+        }
     });
-
 };
 
 function putData(array) {
@@ -237,6 +237,37 @@ $(function updateDropdown () {
     });
 });
 
+$(function updateKValue () {
+    $("#end-year-select").change(function (e) {
+        var tempKArray = [];
+        kList = [];
+        Object.keys(tempYears).forEach(function (key) {
+            if (parseInt(key) >= $("#start-year-select option:selected").val() && parseInt(key) <= $("#end-year-select option:selected").val()) {
+                tempKArray = (tempYears[key]);
+                updatekTemp(tempKArray);
+            }
+        });
+        numK = Object.keys(kList).length;
+
+        $("#k-select").empty();
+        for (i = -1; i < numK; i++) {
+            var option = document.createElement("option");
+            option.text = i + 1;
+            option.value = i + 1;
+            $("#k-select").append(option);
+        }
+        $("#k-select option:last").attr("selected", "selected");
+
+    });
+});
+
+function updatekTemp(array) {
+    Object.keys(array).forEach(function (key) {
+        if (kList.includes(key) === false) {
+            kList.push(key);
+        }
+    });
+}
 
 
 function updateGraph(temp_data, term, k){
