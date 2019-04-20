@@ -5,6 +5,7 @@ It is a widely accepted fact that the worlds of science fiction and scientific r
 This project will seek to use web scraping to parse various science databases for references to science fiction works, concepts, and authors that have influenced modern technologies. This archive will then be used to produce statistical models that demonstrate how the world of speculative science fiction and modern scientific thought are hardwired at the most basic levels.
 
 ## Release Notes
+
 ### April 19, 2019
 ### New Software Features
 * Firebase Database Structure Updates
@@ -20,6 +21,25 @@ This project will seek to use web scraping to parse various science databases fo
 ### Known bugs and defects
 * Out of the 700 or so terms, a select handful of them may have errors in their data. This only happens with terms with only a few occurrences throughout all of history. These faulty terms are being removed as they are found.
 * The database we are using to fetch the application data caps at 10 GB of downloads per month, after which the app will no longer work properly.
+
+
+### April 14, 2019
+### New Software Features
+* Populated a new Firebase Database
+* Firebase Database Structure was rebuilt
+* Codes were updated in accordance with Database Structure Changes
+
+
+### April 8, 2019
+### New Software Features
+* Finished Scrapping data
+* Pie chart update with new data
+* Amplitude graph update with new data
+* Search dropdown update (End year select dropdown automatically change depending on start year select dropdown)
+
+### Bug Fixes
+* Fixed issues in the Pie Chart Visualization
+* Fixed Search bar issue (now apostrophe can be searched)
 
 ## Install Guide
 * Pre-requisites: Internet Access and a Web Browser
