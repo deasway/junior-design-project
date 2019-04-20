@@ -54,15 +54,15 @@ Currently Search Bar behaves weird sometimes
 * Implementation of fundamental Pie Chart / Amplitude Graph
 
 ### March 4, 2019
-### New Software Features
-* Back End Debugging
+### Bug Fixes
+* Back End Debugging - Now Data fit in the Database Structure
 
 ### February 17, 2019
 ### New Software Features
 * Database set up
 * Database population
 ### Known bugs and defects
-* Not All data fit the Database Structure
+* Not All data fit in the Database Structure
 
 ### February 4, 2019
 ### New Software Features
