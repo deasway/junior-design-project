@@ -31,6 +31,7 @@ window.chart = null;
 var colorNames = Object.keys(window.chartColors);
 
 
+
 function loadGraphAmp(term, k, entryDate){
     const verticalLinePlugin = {
         getLinePosition: function (chart, pointIndex) {
@@ -150,6 +151,71 @@ function loadGraphAmp(term, k, entryDate){
     window.chart = new Chart(ctx, config);
     window.chart.update();
 }
+function updateGraphWithFilters(start_year, end_year, k, subfields) {
+    const chart = window.chart;
+    
+    start_year = parseInt(start_year);
+    end_year = parseInt(end_year);
+    const start_ind = total_X_axis.indexOf(start_year);
+    const end_ind = total_X_axis.indexOf(end_year);
+    config.data.labels = total_X_axis.slice(start_ind, end_ind + 1);
+    config.data.datasets = [{
+        label: "Total Occurrences",
+        lineTension: 0,
+        fill: false,
+        data: total_Y_axis.slice(start_ind, end_ind + 1),
+        backgroundColor: 'rgba(255, 99, 132,0.1)',
+        borderColor: 'rgb(255, 99, 132)',
+    }];
+
+    let used_data_labels = [];
+     for (i = 0; i < k; i++) {
+         if (i >= sortedCats.length) {
+             break;
+         }
+         var cat = sortedCats[i];
+         if (!used_data_labels.includes(cat)) {
+             var cat_Y_axis = getOccurrencesForCategory(cat);
+             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+             var newColor = window.chartColors[colorName];
+             var newDataset = {
+                 label : cat,
+                 backgroundColor: newColor,
+                 borderColor: newColor,
+                 data : cat_Y_axis.slice(start_ind, end_ind + 1),
+                 lineTension: 0,
+                 fill: false
+             };
+             used_data_labels.push(cat);
+             config.data.datasets.push(newDataset);
+         }
+     }
+     for (i = 0; i < subfields.length; i++) {
+         category = subfields[i] + ' ';
+         if (!used_data_labels.includes(category)) {
+             var cat_Y_axis = getOccurrencesForCategory(category);
+             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+             var newColor = window.chartColors[colorName];
+             var newDataset = {
+                 label : category,
+                 backgroundColor: newColor,
+                 borderColor: newColor,
+                 data : cat_Y_axis.slice(start_ind, end_ind + 1),
+                 lineTension: 0,
+                 fill: false
+             };
+             used_data_labels.push(cat);
+             config.data.datasets.push(newDataset);
+         }
+     }
+    
+    if (parseInt(date) < start_year || parseInt(date) > end_year) {
+        window.chart.config.lineAtIndex = [];
+    } else {
+        window.chart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date)) - total_X_axis.indexOf(start_year)];
+    }
+    window.chart.update();
+}
 
 // function updateGraph(term, oldK, k, added_field_index) {
 //     const chart = window.chart;
@@ -226,6 +292,7 @@ function getOccurrencesForCategory(cat) {
     for (j = total_X_axis[0]; j <= total_X_axis[total_X_axis.length - 1]; j++) {
         if (yearlyCatData.hasOwnProperty(j.toString()) &&
             yearlyCatData[j.toString()].hasOwnProperty(cat)) {
+            console.log(cat);
             y_axis.push(parseInt(yearlyCatData[j.toString()][cat]));
         } else {
             y_axis.push(0);
@@ -287,3 +354,4 @@ function drawAmplitude() {
     });
 };
 $(window).on('load', () => drawAmplitude());
+

@@ -105,10 +105,6 @@ function updateKQuery(k) {
         updateQueryStringParameter(document.location.href, "k", k));
 }
 
-function clearCanvas() {
-    let canvas = document.getElementById('chart');
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-}
 
 // Redraws the graph based on the updated filters
 var currentFilter = 'Amplitude';
@@ -122,25 +118,26 @@ function updateFilter() {
            return $.trim($(this).attr('data-value'));
         }).get()
     }
-    // TODO add logic to update chart js graph here
-    console.log(filters);
     const search_term = urlParams.get('search').toLowerCase();
 
-    // Switch out graph types
+    // Switch out graph types. otherwise just update the graph 
+    // TODO: update pie
     if (filters.graph !== currentFilter) {
         switch (filters.graph) {
             case 'Amplitude':
-                clearCanvas();
                 loadGraphAmp(search_term, filters.k, dateGlobal);
                 break;
             case 'Map':
-                clearCanvas();
                 drawMap();
                 break;
         }
         currentFilter = filters.graph;
     } else {
-        // TODO simply redraw existing graph
+        switch (filters.graph) {
+            case 'Amplitude':
+                updateGraphWithFilters(filters.startYear, filters.endYear, filters.k, filters.subfields);
+                break;
+        }
     }
 }
 
