@@ -1,0 +1,14 @@
+/* Search form wrapper */
+div.outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Offset validation height */
+div.alert-div {
+    margin-top: -64px;
+}

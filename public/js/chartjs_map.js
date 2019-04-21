@@ -46,7 +46,7 @@ var yearlyData = {};
 var labels = [];
 var nums = [];
 var temp = {};
-var myChart;
+var chart;
 var min = 0;
 var max = 0;
 var tempYears = {};
@@ -54,7 +54,7 @@ var numK = 0;
 var kList = [];
 
 
-function loadGraph(raw_data, term, k){
+function loadGraphMap(raw_data, term, k){
     // sort k-num
 
     var data_map = new Map();
@@ -75,7 +75,7 @@ function loadGraph(raw_data, term, k){
     data_content.push(total_occurrences);
 
 
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('chart').getContext('2d');
     var config = {
         type: 'doughnut',
 
@@ -96,7 +96,8 @@ function loadGraph(raw_data, term, k){
                 text: "Results for " + term.toUpperCase(),
                 fontSize: 25
             },
-
+            maintainAspectRatio: false,
+            responsive: true,
             legend: {
                 position: "top"
             }
@@ -120,25 +121,15 @@ function loadGraph(raw_data, term, k){
         } 
     }
     //console.log(config.data.datasets);
-    myChart = new Chart(ctx, config);
+    chart = new Chart(ctx, config);
 }
 
-window.onload = function() {
+function drawMap() {
     const urlParams = new URLSearchParams(window.location.search);
     const search_term = urlParams.get('search').toLowerCase();
     const k = urlParams.get('k');
     currentK = parseInt(k);
 
-    var config = {
-        apiKey: "AIzaSyB-Hrepj-ywDEoUIao6sVrH0UykxvcuXuw",
-        authDomain: "space-force-dinos.firebaseapp.com",
-        databaseURL: "https://space-force-dinos.firebaseio.com",
-        projectId: "space-force-dinos",
-        storageBucket: "space-force-dinos.appspot.com",
-        messagingSenderId: "590463825386"
-      };
-    firebase.initializeApp(config);
-    var database = firebase.database();
     database.ref('/fields/' + search_term).once('value').then(function(snapshot) {
         raw_data = snapshot.val()['total'].replaceAll("'", '"');
         yearlyData = snapshot.val()['by_year'];
@@ -158,11 +149,9 @@ window.onload = function() {
                 var option = document.createElement("option");
                 option.text = i;
                 option.value = i;
-                start_year_select.add(option);
                 var option = document.createElement("option");
                 option.text = i;
                 option.value = i;
-                end_year_select.add(option);
             }
             $("#end-year-select").val(max);
             var k_select = document.getElementById("k-select");
@@ -170,7 +159,6 @@ window.onload = function() {
                 var option = document.createElement("option");
                 option.text = i + 1;
                 option.value = i + 1;
-                k_select.add(option);
             }
             $("#k-select").val(k);
 
@@ -184,30 +172,10 @@ window.onload = function() {
             updateGraph(temp_data, search_term.toUpperCase(), k);
 
         } else {
-            loadGraph(raw_data, search_term.toUpperCase(), k);
+            loadGraphMap(raw_data, search_term.toUpperCase(), k);
         }
     });
 
-
-    document.getElementById('process-button').addEventListener('click', function() {
-        var startYear = parseInt(document.getElementById("start-year-select").value);
-        var endYear = parseInt(document.getElementById("end-year-select").value);
-        var k_selected = parseInt(document.getElementById("k-select").value);
-        temp_data = {};
-        temp = {};
-        temp_total = 0;
-        Object.keys(tempYears).forEach(function (key) {
-            if (parseInt(key) >= startYear && parseInt(key) <= endYear) {
-                temp = (tempYears[key]);
-                putData(temp);
-            }
-        });
-        if (Object.entries(temp_data).length !== 0) {
-            updateGraph(temp_data, search_term.toUpperCase(), k_selected);
-        } else {
-            alert("No Yearly Data Available");
-        }
-    });
 };
 
 function putData(array) {
@@ -291,8 +259,8 @@ function updatekTemp(array) {
 
 function updateGraph(temp_data, term, k){
     // sort k-num
-    if (myChart) {
-        myChart.destroy();
+    if (chart) {
+        chart.destroy();
     }
     var data_map = new Map();
     for (var key in temp_data) {
@@ -311,7 +279,7 @@ function updateGraph(temp_data, term, k){
     data_content.push(temp_total);
 
 
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('chart').getContext('2d');
     var config = {
         type: 'doughnut',
 
@@ -356,6 +324,6 @@ function updateGraph(temp_data, term, k){
         }
     }
     //console.log(config.data.datasets);
-    myChart = new Chart(ctx, config);
+    chart = new Chart(ctx, config);
 
 }

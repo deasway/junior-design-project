@@ -52,7 +52,6 @@ function validate() {
 
     if (in_array == -1) {
         $('.search__field').css({"border": "2px solid red"});
-        alert("No Result Found");
         document.getElementById("alert").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
 
         //$(".search__icon").css({"background-color": "transparent", "cursor": "pointer", "pointer-events": "auto"});

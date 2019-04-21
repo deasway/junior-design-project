@@ -56,7 +56,6 @@ function validate() {
     var in_array = jQuery.inArray(inpObj.toLowerCase(), names);
     if (in_array == -1) {
         $('.search__field').css({"border": "2px solid red"});
-        alert("No Result Found");
         document.getElementById("alert2").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
         return false;
     }

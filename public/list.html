@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SDP | List</title>
+    <meta name="description" content="SDP proof of concept prototype">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/list.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css"
+        integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
+        integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand ml-3" href="index.html">Space Dinosaur Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home</a>
+                <a class="nav-item nav-link" href="search.html">Search Data </a>
+                <a class="nav-item nav-link active" href="list.html">Search List<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- Search box row -->
+    <div class="row search-row fixed-top" style="top: 56px; z-index: 1010;">
+        <div class="container">
+            <form id="search-form" class="form-inline mr-2 d-flex">
+                <input id="search" class="form-control mr-2" type="search" name="search"
+                    spellcheck="false" label="search list" placeholder="Search for..." autocorrect="off" autocapitalize="off" autocomplete="off">
+            </form>
+        </div>
+    </div>
+    <!-- Main content -->
+    <div class="container">
+        <!-- Letter labels -->
+        <div class="search-header fixed-top" style="top: 114px; z-index: 1000;">
+            <ul class="category-page-alphabet-shortcuts">
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#A">A</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#B">B</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#C">C</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#D">D</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#E">E</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#F">F</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#G">G</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#H">H</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#I">I</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#J">J</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#K">K</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#L">L</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#M">M</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#N">N</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#O">O</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#P">P</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#Q">Q</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#R">R</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#S">S</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#T">T</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#U">U</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#V">V</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#W">W</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#X">X</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#Y">Y</a></li>
+                <li class="category-page-alphabet-shortcut">
+                    <a href = "#Z">Z</a></li>
+            </ul>
+        </div>
+        <div id="category-page-members"></div>
+    </div>
+</main>
+<!-- Libraries -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"></script>
+<!-- Local script-->
+<script type="text/javascript" src="js/list.js"></script>
+</body>
+</html>

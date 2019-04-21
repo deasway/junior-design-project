@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SDP | Data</title>
+    <meta name="description" content="SDP proof of concept prototype">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/data.css">
+    <link rel="stylesheet" href="css/tagsinput.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css" integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand ml-3" href="index.html">Space Dinosaur Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home</a>
+                <a class="nav-item nav-link active" href="search.html">Search Data <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="list.html">Search List</a>
+                <a class="nav-item nav-link" href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="outer">
+        <div class="chart-container">
+            <canvas id="chart" style="width: 100%;"></canvas>
+        </div>
+        <div class="filter-container">
+            <div id="options-section2">
+                <div id="graph-select" class="btn-group btn-group-toggle mb-5" style="margin: 0 auto; width: 100%;" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off"> Amplitude
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Map
+                    </label>
+                </div>
+                <h3><i class="fas fa-filter mr-3"></i>Filters</h3>
+                <div class="range-container">
+                    <div><input type="text" id="start-year-txt" value="1920"></input></div>
+                    <div>
+                        <label for="start-year" class="slider-label">Start Year</label>
+                        <input type="range" class="custom-range year-range-selectors" min="0" max="5" value="0" id="start-year">
+                    </div>
+                </div>
+                <div class="range-container">
+                    <div><input type="text" id="end-year-txt" value="2019"></input></div>
+                    <div>
+                        <label for="end-year" class="slider-label">End Year</label>
+                        <input type="range" class="custom-range year-range-selectors" min="0" max="5" value="5" id="end-year">
+                    </div>
+                </div>
+                <hr/>
+                <div class="range-container">
+                    <div><input type="text" id="k-select-txt" value="0"></input></div>
+                    <div>
+                        <label for="k-select" class="slider-label">Show K Most Common Subfields</label>
+                        <input type="range" class="custom-range" min="0" max="5" value="0" id="k-select">
+                    </div>
+                </div>
+                <p class="slider-label subfields-label">Specific Subfields</p>
+                <ul id="subfields"></ul>
+                <div class="d-flex">
+                    <select id="subfield-select" class="form-control" name="fields">
+                        <!-- Will be added to by initializing JavaScript -->
+                    </select>
+                    <button id="subfield-add" class="btn btn-secondary ml-2"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Libraries -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/tagsinput.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+<!-- Local script -->
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/chartjs_amplitude.js"></script>
+<script type="text/javascript" src="js/chartjs_map.js"></script>
+</body>
+</html>

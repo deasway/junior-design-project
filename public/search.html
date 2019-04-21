@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SDP | Search</title>
+    <meta name="description" content="SDP proof of concept prototype">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/search-common.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/common.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand ml-3" href="index.html">Space Dinosaur Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home</a>
+                <a class="nav-item nav-link active" href="search.html">Search Data <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="list.html">Search List</a>
+                <a class="nav-item nav-link" href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- Center align -->
+    <div class="outer">
+        <!-- Validation container -->
+        <div class="alert-div mb-1">
+            <p id="alert">
+                <span class='error'>No Matching Terms Found. Please Search Again.</span>
+            </p>
+        </div>
+        <!-- Search form -->
+        <form onsubmit="return validate();" action="data.html" class="search" method="get">
+            <div class="search-wrapper">
+                <input type="text" name="search" placeholder="Search for..."
+                       pattern="^[a-zA-Z0-9-()' ]*$" class="search-field" minlength="2" aria-label="search"
+                       oninvalid="this.setCustomValidity('Words should be at least 2 characters. Uppercase and Lowercase alphabets, numbers, and ()- are allowed characters.')"
+                       onchange="try{setCustomValidity('')}catch(e){}"
+                       oninput="setCustomValidity('')">
+                <input type="hidden" name="k" value="0">
+                <button type="submit" class="fa fa-search search-icon"></button>
+            </div>
+        </form>
+    </div>
+</main>
+<!-- Libraries -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase-messaging.js"></script>
+<!-- Local script -->
+<script type="text/javascript" src="js/search.js"></script>
+</body>
+</html>
