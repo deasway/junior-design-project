@@ -19,6 +19,7 @@ This project will seek to use web scraping to parse various science databases fo
 ### Known bugs and defects
 * Out of the 700 or so terms, a select handful of them may have errors in their data. This only happens with terms with only a few occurrences throughout all of history. These faulty terms are being removed as they are found.
 * The database we are using to fetch the application data caps at 10 GB of downloads per month, after which the app will no longer work properly.
+* Sometimes the table of contents does not load. Refreshing the page once or twice solves this problem.
 
 ### April 14, 2019
 ### New Software Features
