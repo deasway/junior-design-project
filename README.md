@@ -74,7 +74,7 @@ Currently Search Bar behaves weird sometimes
 * Aggregate data about a term from articles in "Web of Science"
 * The script to get dates from the Merriam Webster English Dictionary API
 
-## Install Guide
+## Installation Guide
 * Pre-requisites: Internet Access and a Web Browser
 * Dependent libraries that must be installed: None
 * Download instructions: None
