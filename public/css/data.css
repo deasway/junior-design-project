@@ -24,6 +24,9 @@ div.filter-container {
     max-width: 440px;
 }
 
+#date-entry {
+    padding-top: 20px;
+}
 div.range-container {
     min-width: 0;
     display: flex;

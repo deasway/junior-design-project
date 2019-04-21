@@ -292,7 +292,6 @@ function getOccurrencesForCategory(cat) {
     for (j = total_X_axis[0]; j <= total_X_axis[total_X_axis.length - 1]; j++) {
         if (yearlyCatData.hasOwnProperty(j.toString()) &&
             yearlyCatData[j.toString()].hasOwnProperty(cat)) {
-            console.log(cat);
             y_axis.push(parseInt(yearlyCatData[j.toString()][cat]));
         } else {
             y_axis.push(0);
@@ -310,6 +309,8 @@ function drawAmplitude() {
 
     database.ref('/origins/' + search_term).once('value').then(function(snapshot) {
         date = snapshot.val()['brave'];
+        document.getElementById('date-entry').innerText = 'Word Enters SF Lexicon: '.concat(date);
+
     });
 
     database.ref('/occurrences/' + search_term).once('value').then(function(snapshot) {
