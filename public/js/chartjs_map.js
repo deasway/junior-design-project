@@ -74,7 +74,7 @@ function loadGraphMap(raw_data, term, k){
     var data_content = [];
     data_content.push(total_occurrences);
 
-
+    $('#chart-container').html(canvas_html);
     var ctx = document.getElementById('chart').getContext('2d');
     var config = {
         type: 'doughnut',

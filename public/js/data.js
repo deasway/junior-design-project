@@ -16,6 +16,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const search_term = urlParams.get('search').toLowerCase();
 const k = urlParams.get('k');
 currentK = parseInt(k);
+const canvas_html = '<canvas id="chart" style="width: 100%;"></canvas>'
 
 // Load database
 var database = firebase.database();
@@ -104,6 +105,11 @@ function updateKQuery(k) {
         updateQueryStringParameter(document.location.href, "k", k));
 }
 
+function clearCanvas() {
+    let canvas = document.getElementById('chart');
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+}
+
 // Redraws the graph based on the updated filters
 var currentFilter = 'Amplitude';
 function updateFilter() {
@@ -124,10 +130,12 @@ function updateFilter() {
     if (filters.graph !== currentFilter) {
         switch (filters.graph) {
             case 'Amplitude':
+                clearCanvas();
                 loadGraphAmp(search_term, filters.k, dateGlobal);
                 break;
             case 'Map':
-                 drawMap();
+                clearCanvas();
+                drawMap();
                 break;
         }
         currentFilter = filters.graph;

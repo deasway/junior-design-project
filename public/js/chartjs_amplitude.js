@@ -17,6 +17,7 @@ var aTerm = "";
 var kList = [];
 var tempYears = {};
 
+
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
@@ -28,6 +29,7 @@ window.chartColors = {
 };
 window.chart = null;
 var colorNames = Object.keys(window.chartColors);
+
 
 function loadGraphAmp(term, k, entryDate){
     const verticalLinePlugin = {
@@ -62,8 +64,10 @@ function loadGraphAmp(term, k, entryDate){
             }
         }
     };
+    
 
     Chart.plugins.register(verticalLinePlugin);
+    $('#chart-container').html(canvas_html);
     var ctx = document.getElementById('chart').getContext('2d');
     config = {
         lineAtIndex: [total_X_axis.indexOf(parseInt(entryDate))],
