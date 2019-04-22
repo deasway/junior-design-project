@@ -62,7 +62,6 @@ function drawMap(term, k_value) {
         temp_total = 0;
 
         Object.keys(occurrences).forEach(function (key) {
-
             if (parseInt(key) >= parseInt($('#start-year').val()) && parseInt(key) <= parseInt($('#end-year').val())) {
                 temp = (occurrences[key]);
                 putData(temp);
@@ -70,25 +69,24 @@ function drawMap(term, k_value) {
         });
 
         if (Object.entries(temp_data).length !== 0) {
-            updateGraph(search_term.toUpperCase(), currentK);
+            updateGraph(temp_data, search_term.toUpperCase(), currentK);
         } else {
             alert("No Yearly Data Available");
         }
-
     } else {
-        loadGraphMap(total, search_term.toUpperCase(), currentK);
+        loadGraphMap(search_term.toUpperCase(), currentK);
     }
 };
 
-function updateGraph(term, k){
+function updateGraph(dataSet, term, k){
 
     if (chart) {
         chart.destroy();
     }
     var data_map = new Map();
-    for (var key in temp_data) {
-        if (temp_data.hasOwnProperty(key)) {
-            data_map.set(key, temp_data[key]);
+    for (var key in dataSet) {
+        if (dataSet.hasOwnProperty(key)) {
+            data_map.set(key, dataSet[key]);
         }
     }
 
