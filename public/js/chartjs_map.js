@@ -3,6 +3,7 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.split(search).join(replacement);
 };
 
+
 // basic clor definitions
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -34,118 +35,139 @@ window.chartColors = {
     grey: 'rgb(201, 203, 207)',
 };
 
-var yearlyCatData = null;
 var colorNames = Object.keys(window.chartColors);
 var total_occurrences = 0;
 var temp_total = 0;
-var years = [];
 var temp_data = {};
 var name;
-var yearlyData = {};
 var labels = [];
-var nums = [];
 var temp = {};
 var chart;
 var min = 0;
 var max = 0;
-var numK = 0;
-var kList = [];
+var tempName =[];
 
-function drawMap(term, k_value) {
+function drawMap(term, k_value, subfield) {
     //const urlParams = new URLSearchParams(window.location.search);
     const k = k_value;
     currentK = parseInt(k);
 
-    if (Object.keys(occurrences).length != 0) {
-        temp_data = {};
-        temp = {};
-        temp_total = 0;
-
-        Object.keys(occurrences).forEach(function (key) {
-            if (parseInt(key) >= parseInt($('#start-year').val()) && parseInt(key) <= parseInt($('#end-year').val())) {
-                temp = (occurrences[key]);
-                putData(temp);
-            }
-        });
-
-        if (Object.entries(temp_data).length !== 0) {
-            updateGraph(temp_data, search_term.toUpperCase(), currentK);
-        } else {
-            alert("No Yearly Data Available");
-        }
-    } else {
+    if (Object.keys(occurrences).length == 0) {
         loadGraphMap(search_term.toUpperCase(), currentK);
+    } else {
+        updateGraph(search_term.toUpperCase(), currentK, subfield);
     }
 };
 
-function updateGraph(dataSet, term, k){
+function updateGraph(term, k, subfields){
+    temp_data = {};
+    temp = {};
+    temp_total = 0;
 
-    if (chart) {
-        chart.destroy();
-    }
-    var data_map = new Map();
-    for (var key in dataSet) {
-        if (dataSet.hasOwnProperty(key)) {
-            data_map.set(key, dataSet[key]);
+    Object.keys(occurrences).forEach(function (key) {
+        if (parseInt(key) >= parseInt($('#start-year').val()) && parseInt(key) <= parseInt($('#end-year').val())) {
+            temp = (occurrences[key]);
+            putData(temp);
         }
-    }
+    });
 
-    // sort data
-    data_map[Symbol.iterator] = function* () {
-        yield* [...this.entries()].sort((a, b) => b[1] - a[1]);
-    };
+    if (Object.entries(temp_data).length === 0) {
+        alert("No Yearly Data Available");
+    } else {
+        if (chart) {
+            chart.destroy();
+        }
+        var data_map = new Map();
+        for (var key in temp_data) {
+            if (temp_data.hasOwnProperty(key)) {
+                data_map.set(key, temp_data[key]);
+            }
+        }
 
-    var data_labels = ["Other"];
-    var data_content = [];
-    data_content.push(temp_total);
+        // sort data
+        data_map[Symbol.iterator] = function* () {
+            yield* [...this.entries()].sort((a, b) => b[1] - a[1]);
+        };
+
+        var data_labels = ["Other"];
+        var data_content = [];
+        data_content.push(temp_total);
 
 
-    var ctx = document.getElementById('chart').getContext('2d');
-    var config = {
-        type: 'doughnut',
+        var ctx = document.getElementById('chart').getContext('2d');
+        var config = {
+            type: 'doughnut',
 
-        // Dataset to display
-        data: {
-            labels: data_labels,
-            datasets: [{
-                data: data_content,
-                backgroundColor: ["rgb(150, 150, 150)"]
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: "Results for " + term,
-                fontSize: 24
+            // Dataset to display
+            data: {
+                labels: data_labels,
+                datasets: [{
+                    data: data_content,
+                    backgroundColor: ["rgb(150, 150, 150)"]
+                }]
             },
 
-            legend: {
-                position: "top"
+            // Configuration options go here
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Results for " + term,
+                    fontSize: 24
+                },
+
+                legend: {
+                    position: "top"
+                }
+            }
+        };
+
+        tempName = [];
+        if (subfields != -1) {
+            for (i = 0; i < subfields.length; i++) {
+                console.log(subfields[i] + ' ');
+                for (let [key, value] of data_map) {
+                    if ((subfields[i] + ' ') == key) {
+                        tempName.push(key + '');
+                        var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
+                        var newColor = window.chartColors[colorName];
+                        config.data.labels.push(key);
+                        config.data.datasets[0].data.push(parseInt(value));
+                        config.data.datasets[0].backgroundColor.push(newColor);
+                        i++;
+
+                        config.data.datasets[0].data[0] -= parseInt(value);
+                        if (config.data.datasets[0].data[0] < 0) {
+                            config.data.datasets[0].data[0] = 0;
+                        }
+                    }
+                }
             }
         }
-    };
 
-    var i = 0;
-    for (let [key, value] of data_map) {
-        if (i < k) {
-            var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
-            var newColor = window.chartColors[colorName];
-            config.data.labels.push(key);
-            config.data.datasets[0].data.push(parseInt(value));
-            config.data.datasets[0].backgroundColor.push(newColor);
-            i++;
+        var i = tempName.length;
+        console.log(i);
+        for (let [key, value] of data_map) {
+            if (i < k && !tempName.includes(key + '')) {
+                tempName.push(key + '');
+                var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
+                var newColor = window.chartColors[colorName];
+                config.data.labels.push(key);
+                config.data.datasets[0].data.push(parseInt(value));
+                config.data.datasets[0].backgroundColor.push(newColor);
+                i++;
 
-            config.data.datasets[0].data[0] -= parseInt(value);
-            if (config.data.datasets[0].data[0] < 0) {
-                config.data.datasets[0].data[0] = 0;
+                config.data.datasets[0].data[0] -= parseInt(value);
+                if (config.data.datasets[0].data[0] < 0) {
+                    config.data.datasets[0].data[0] = 0;
+                }
             }
         }
+        //console.log(config.data.datasets);
+        chart = new Chart(ctx, config);
     }
-    //console.log(config.data.datasets);
-    chart = new Chart(ctx, config);
+
+
 }
 
 function loadGraphMap(term, k){

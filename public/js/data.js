@@ -128,7 +128,7 @@ function updateFilter() {
                 loadGraphAmp(search_term, filters.k, dateGlobal);
                 break;
             case 'Map':
-                drawMap(search_term, filters.k);
+                drawMap(search_term, filters.k, parseInt(-1));
                 break;
         }
         currentFilter = filters.graph;
@@ -138,7 +138,7 @@ function updateFilter() {
                 updateGraphWithFilters(filters.startYear, filters.endYear, filters.k, filters.subfields);
                 break;
             case 'Map':
-                drawMap(search_term, filters.k);
+                updateGraph(search_term.toUpperCase(), filters.k, filters.subfields);
                 break;
         }
     }
