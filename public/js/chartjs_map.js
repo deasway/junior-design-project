@@ -121,20 +121,17 @@ function updateGraph(term, k, subfields){
                 }
             }
         };
-
         tempName = [];
         if (subfields != -1) {
             for (i = 0; i < subfields.length; i++) {
-                console.log(subfields[i] + ' ');
                 for (let [key, value] of data_map) {
                     if ((subfields[i] + ' ') == key) {
-                        tempName.push(key + '');
+                        tempName.push(key + ' ');
                         var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
                         var newColor = window.chartColors[colorName];
                         config.data.labels.push(key);
                         config.data.datasets[0].data.push(parseInt(value));
                         config.data.datasets[0].backgroundColor.push(newColor);
-                        i++;
 
                         config.data.datasets[0].data[0] -= parseInt(value);
                         if (config.data.datasets[0].data[0] < 0) {
