@@ -129,10 +129,8 @@ function updateFilter() {
                 break;
             case 'Map':
                 drawMap(search_term, filters.k, parseInt(-1));
-                $('#chart-container').css('text-align', 'center');
                 $('#chart').css('max-width', '1000px');
                 $('#chart').css('display', 'inline-block');
-                console.log("here i am");
                 break;
         }
         currentFilter = filters.graph;

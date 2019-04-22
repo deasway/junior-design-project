@@ -122,50 +122,44 @@ function updateGraph(term, k, subfields){
                 }
             }
         };
-        tempName = [];
+        keysAdded = [];
         if (subfields != -1) {
             for (i = 0; i < subfields.length; i++) {
                 for (let [key, value] of data_map) {
-                    if ((subfields[i] + ' ') == key) {
-                        tempName.push(key + ' ');
-                        var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
-                        var newColor = window.chartColors[colorName];
-                        config.data.labels.push(key);
-                        config.data.datasets[0].data.push(parseInt(value));
-                        config.data.datasets[0].backgroundColor.push(newColor);
-
-                        config.data.datasets[0].data[0] -= parseInt(value);
-                        if (config.data.datasets[0].data[0] < 0) {
-                            config.data.datasets[0].data[0] = 0;
-                        }
+                    if ((subfields[i].toString()) == key.trim()) {
+                        addSpecificKey(key, value, keysAdded, config);
                     }
                 }
             }
         }
 
-        var i = tempName.length;
+        var i = 0;
         console.log(i);
         for (let [key, value] of data_map) {
-            if (i < k && !tempName.includes(key + '')) {
-                tempName.push(key + '');
-                var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
-                var newColor = window.chartColors[colorName];
-                config.data.labels.push(key);
-                config.data.datasets[0].data.push(parseInt(value));
-                config.data.datasets[0].backgroundColor.push(newColor);
-                i++;
-
-                config.data.datasets[0].data[0] -= parseInt(value);
-                if (config.data.datasets[0].data[0] < 0) {
-                    config.data.datasets[0].data[0] = 0;
-                }
-            }
+            if (i < k && !keysAdded.includes(key.toString())) {
+                addSpecificKey(key, value, keysAdded, config);
+                ++i;
+            } else if (i >= k) break;
         }
         //console.log(config.data.datasets);
         chart = new Chart(ctx, config);
     }
 
 
+}
+
+function addSpecificKey(key, value, keysAdded, config) {
+    keysAdded.push(key.toString());
+    var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
+    var newColor = window.chartColors[colorName];
+    config.data.labels.push(key);
+    config.data.datasets[0].data.push(parseInt(value));
+    config.data.datasets[0].backgroundColor.push(newColor);
+
+    config.data.datasets[0].data[0] -= parseInt(value);
+    if (config.data.datasets[0].data[0] < 0) {
+        config.data.datasets[0].data[0] = 0;
+    }
 }
 
 function loadGraphMap(term, k){
