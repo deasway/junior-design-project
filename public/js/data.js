@@ -129,6 +129,10 @@ function updateFilter() {
                 break;
             case 'Map':
                 drawMap(search_term, filters.k, parseInt(-1));
+                $('#chart-container').css('text-align', 'center');
+                $('#chart').css('max-width', '1000px');
+                $('#chart').css('display', 'inline-block');
+                console.log("here i am");
                 break;
         }
         currentFilter = filters.graph;
@@ -139,6 +143,7 @@ function updateFilter() {
                 break;
             case 'Map':
                 updateGraph(search_term.toUpperCase(), filters.k, filters.subfields);
+                $('#chart').css('display', 'inline-block');
                 break;
         }
     }

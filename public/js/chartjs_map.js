@@ -117,7 +117,8 @@ function updateGraph(term, k, subfields){
                 },
 
                 legend: {
-                    position: "top"
+                    position: "right",
+                    boxWidth: "12"
                 }
             }
         };
@@ -201,16 +202,17 @@ function loadGraphMap(term, k){
 
         // Configuration options go here
         options: {
-            responsive: true,
+            // responsive: true,
             title: {
                 display: true,
                 text: "Results for " + term.toUpperCase(),
                 fontSize: 25
             },
-            maintainAspectRatio: false,
-            responsive: true,
+            maintainAspectRatio: true,
+            responsive: false,
             legend: {
-                position: "top"
+                position: "right",
+                fullWidth: false
             }
         }
     };
