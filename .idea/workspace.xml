@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c2c259-71fb-4033-a8b4-381e46f3f8fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/data.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/data.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/data.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chartjs_amplitude.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chartjs_amplitude.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chartjs_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chartjs_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/data.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,44 +23,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/chartjs_amplitude.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="428" column="64" selection-start-line="428" selection-start-column="64" selection-end-line="428" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/chartjs_map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="252" column="64" selection-start-line="252" selection-start-column="64" selection-end-line="252" selection-end-column="64" />
+            <state relative-caret-position="2983">
+              <caret line="157" selection-start-line="157" selection-end-line="158" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/searchMap.html">
+        <entry file="file://$PROJECT_DIR$/public/js/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-159">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="304">
+              <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/map.js">
+        <entry file="file://$PROJECT_DIR$/public/css/data.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="33" />
+            <state relative-caret-position="459">
+              <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/moresearchstuff.css">
+        <entry file="file://$PROJECT_DIR$/public/data.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2641">
-              <caret line="139" column="22" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
+            <state relative-caret-position="1482">
+              <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="-301">
               <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
             </state>
           </provider>
@@ -106,16 +104,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/chartjs_map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="421">
+              <caret line="231" column="1" selection-start-line="231" selection-start-column="1" selection-end-line="231" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>alert</find>
-      <find>navbar</find>
-      <find>result</find>
-      <find>title</find>
-      <find>loadGraph</find>
-      <find>chart</find>
       <find>element</find>
       <find>enters</find>
       <find>726</find>
@@ -126,20 +127,26 @@
       <find>start</find>
       <find>min</find>
       <find>select</find>
-      <find>total</find>
       <find>option</find>
-      <find>raw_data</find>
       <find>classic</find>
-      <find>term</find>
       <find>aterm</find>
       <find>aTerm</find>
       <find>names</find>
       <find>auto</find>
       <find>autocom</find>
       <find>temp</find>
-      <find>tempYears</find>
       <find>search_term</find>
       <find>tempyears</find>
+      <find>dateglobal</find>
+      <find>yearlyData</find>
+      <find>tempYears</find>
+      <find>raw_data</find>
+      <find>json</find>
+      <find>total</find>
+      <find>term</find>
+      <find>occurrences</find>
+      <find>upper</find>
+      <find>start-year</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,7 +168,10 @@
         <option value="$PROJECT_DIR$/public/js/map.js" />
         <option value="$PROJECT_DIR$/public/searchMap.html" />
         <option value="$PROJECT_DIR$/public/css/moresearchstuff.css" />
+        <option value="$PROJECT_DIR$/public/data.html" />
+        <option value="$PROJECT_DIR$/public/css/data.css" />
         <option value="$PROJECT_DIR$/public/js/chartjs_amplitude.js" />
+        <option value="$PROJECT_DIR$/public/js/data.js" />
         <option value="$PROJECT_DIR$/public/js/chartjs_map.js" />
       </list>
     </option>
@@ -175,6 +185,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,7 +219,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,17 +258,18 @@
       <workItem from="1555074279551" duration="8839000" />
       <workItem from="1555099198096" duration="4843000" />
       <workItem from="1555373834816" duration="512000" />
+      <workItem from="1555877729641" duration="7860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62427000" />
+    <option name="totallyTimeSpent" value="70287000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.19429778" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19429778" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -270,7 +281,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.34716156" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.34712413" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -354,10 +365,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
+    <entry file="file://$PROJECT_DIR$/public/css/moresearchstuff.css" />
+    <entry file="file://$PROJECT_DIR$/public/searchMap.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        <state relative-caret-position="551">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -389,38 +408,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/moresearchstuff.css">
+    <entry file="file://$PROJECT_DIR$/public/css/data.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2641">
-          <caret line="139" column="22" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
+        <state relative-caret-position="459">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/map.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="33" />
+        <state relative-caret-position="-301">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/searchMap.html">
+    <entry file="file://$PROJECT_DIR$/public/data.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-159">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="1482">
+          <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/chartjs_amplitude.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="428" column="64" selection-start-line="428" selection-start-column="64" selection-end-line="428" selection-end-column="64" />
+        <state relative-caret-position="2983">
+          <caret line="157" selection-start-line="157" selection-end-line="158" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/chartjs_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="252" column="64" selection-start-line="252" selection-start-column="64" selection-end-line="252" selection-end-column="64" />
+        <state relative-caret-position="421">
+          <caret line="231" column="1" selection-start-line="231" selection-start-column="1" selection-end-line="231" selection-end-column="1" />
         </state>
       </provider>
     </entry>

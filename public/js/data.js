@@ -16,18 +16,19 @@ const urlParams = new URLSearchParams(window.location.search);
 const search_term = urlParams.get('search').toLowerCase();
 const k = urlParams.get('k');
 currentK = parseInt(k);
-const canvas_html = '<canvas id="chart" style="width: 100%;"></canvas>'
-
+const canvas_html = '<canvas id="chart"></canvas>'
+var total = {};
+var occurrences = {};
 // Load database
 var database = firebase.database();
 database.ref('/fields/' + search_term).once('value').then(function(snapshot) {
-    var occurrences = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
+    occurrences = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
     var years = [];
     Object.keys(occurrences).sort().forEach(function(key) {
         years.push(parseInt(key));
     });
 
-    var total = JSON.parse(snapshot.val()['total'].replaceAll("'", '"'));
+    total = JSON.parse(snapshot.val()['total'].replaceAll("'", '"'));
     var totalk = 0;
     Object.keys(total).sort().forEach(function(key) {
         $("#subfield-select").append('<option value="' + key + '">' + key + '</option>');
@@ -120,15 +121,14 @@ function updateFilter() {
     }
     const search_term = urlParams.get('search').toLowerCase();
 
-    // Switch out graph types. otherwise just update the graph 
-    // TODO: update pie
+    // Switch out graph types. otherwise just update the graph
     if (filters.graph !== currentFilter) {
         switch (filters.graph) {
             case 'Amplitude':
                 loadGraphAmp(search_term, filters.k, dateGlobal);
                 break;
             case 'Map':
-                drawMap();
+                drawMap(search_term, filters.k);
                 break;
         }
         currentFilter = filters.graph;
@@ -136,6 +136,9 @@ function updateFilter() {
         switch (filters.graph) {
             case 'Amplitude':
                 updateGraphWithFilters(filters.startYear, filters.endYear, filters.k, filters.subfields);
+                break;
+            case 'Map':
+                drawMap(search_term, filters.k);
                 break;
         }
     }

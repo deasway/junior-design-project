@@ -125,6 +125,7 @@ function loadGraphAmp(term, k, entryDate){
             }
         }
     };
+
     if (parseInt(entryDate) < total_X_axis[0] || parseInt(entryDate) > total_X_axis[total_X_axis.length - 1]) {
         config.lineAtIndex = [];
     }
