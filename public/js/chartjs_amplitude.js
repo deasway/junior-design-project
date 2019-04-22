@@ -17,6 +17,7 @@ var aTerm = "";
 var kList = [];
 var tempYears = {};
 
+
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
@@ -26,14 +27,17 @@ window.chartColors = {
     purple: 'rgb(153, 102, 255)',
     grey: 'rgb(201, 203, 207)'
 };
-window.myChart = null;
+window.chart = null;
 var colorNames = Object.keys(window.chartColors);
 
-function loadGraph(term, k, entryDate){
+
+
+function loadGraphAmp(term, k, entryDate){
     const verticalLinePlugin = {
         getLinePosition: function (chart, pointIndex) {
             const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
             const data = meta.data;
+            // TODO point index is -1 here?????
             return data[pointIndex]._model.x;
         },
         renderVerticalLine: function (chartInstance, pointIndex) {
@@ -61,9 +65,11 @@ function loadGraph(term, k, entryDate){
             }
         }
     };
+    
 
     Chart.plugins.register(verticalLinePlugin);
-    var ctx = document.getElementById('myChart').getContext('2d');
+    $('#chart-container').html(canvas_html);
+    var ctx = document.getElementById('chart').getContext('2d');
     config = {
         lineAtIndex: [total_X_axis.indexOf(parseInt(entryDate))],
         type: 'line',
@@ -86,12 +92,11 @@ function loadGraph(term, k, entryDate){
                 display: true,
                 text: "Results for " + term.toUpperCase(),
                 fontSize: 24,
-
+                fontFamily: "'Roboto', sans-serif"
             },
-            responsive: true,
             legend: {
                 display: true,
-                position: 'bottom'
+                position: 'top'
             },
             elements: {
                 point: {
@@ -101,9 +106,17 @@ function loadGraph(term, k, entryDate){
                     hoverRadius: 8,
                 }
             },
+            maintainAspectRatio: false,
+            responsive: true,
             scales: {
                 yAxes: [{
                     stacked: false
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 25
+                    }
                 }]
             },
             tooltips: {
@@ -112,6 +125,7 @@ function loadGraph(term, k, entryDate){
             }
         }
     };
+
     if (parseInt(entryDate) < total_X_axis[0] || parseInt(entryDate) > total_X_axis[total_X_axis.length - 1]) {
         config.lineAtIndex = [];
     }
@@ -135,11 +149,144 @@ function loadGraph(term, k, entryDate){
         };
         config.data.datasets.push(newDataset);
     }
-    window.myChart = new Chart(ctx, config);
-    window.myChart.update();
-
-
+    window.chart = new Chart(ctx, config);
+    window.chart.update();
 }
+function updateGraphWithFilters(start_year, end_year, k, subfields) {
+    const chart = window.chart;
+    
+    start_year = parseInt(start_year);
+    end_year = parseInt(end_year);
+    const start_ind = total_X_axis.indexOf(start_year);
+    const end_ind = total_X_axis.indexOf(end_year);
+    config.data.labels = total_X_axis.slice(start_ind, end_ind + 1);
+    config.data.datasets = [{
+        label: "Total Occurrences",
+        lineTension: 0,
+        fill: false,
+        data: total_Y_axis.slice(start_ind, end_ind + 1),
+        backgroundColor: 'rgba(255, 99, 132,0.1)',
+        borderColor: 'rgb(255, 99, 132)',
+    }];
+
+    let used_data_labels = [];
+     for (i = 0; i < k; i++) {
+         if (i >= sortedCats.length) {
+             break;
+         }
+         var cat = sortedCats[i];
+         if (!used_data_labels.includes(cat)) {
+             var cat_Y_axis = getOccurrencesForCategory(cat);
+             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+             var newColor = window.chartColors[colorName];
+             var newDataset = {
+                 label : cat,
+                 backgroundColor: newColor,
+                 borderColor: newColor,
+                 data : cat_Y_axis.slice(start_ind, end_ind + 1),
+                 lineTension: 0,
+                 fill: false
+             };
+             used_data_labels.push(cat);
+             config.data.datasets.push(newDataset);
+         }
+     }
+     for (i = 0; i < subfields.length; i++) {
+         category = subfields[i] + ' ';
+         if (!used_data_labels.includes(category)) {
+             var cat_Y_axis = getOccurrencesForCategory(category);
+             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+             var newColor = window.chartColors[colorName];
+             var newDataset = {
+                 label : category,
+                 backgroundColor: newColor,
+                 borderColor: newColor,
+                 data : cat_Y_axis.slice(start_ind, end_ind + 1),
+                 lineTension: 0,
+                 fill: false
+             };
+             used_data_labels.push(cat);
+             config.data.datasets.push(newDataset);
+         }
+     }
+    
+    if (parseInt(date) < start_year || parseInt(date) > end_year) {
+        window.chart.config.lineAtIndex = [];
+    } else {
+        window.chart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date)) - total_X_axis.indexOf(start_year)];
+    }
+    window.chart.update();
+}
+
+// function updateGraph(term, oldK, k, added_field_index) {
+//     const chart = window.chart;
+//     let used_data_labels = [];
+//     let field_indexes_to_add = [];
+    
+//     for (i = chart.data.datasets.length - 1; i >= 0; i--) {
+        
+//         if (i > oldK && chart.getDatasetMeta(i).hidden == true) {
+//             chart.data.datasets.splice(i, 1);
+//         }
+//     }
+//     saved_cats = chart.data.datasets.slice(oldK + 1, chart.data.datasets.length);
+//     for (i = 0; i < saved_cats.length; i++) {
+//         field_indexes_to_add.push(sortedCats.indexOf(saved_cats[i]['label']))
+//     }
+//     chart.data.datasets = [{
+//         label: "Total Occurrences",
+//         lineTension: 0,
+//         fill: false,
+//         data: total_Y_axis,
+//         backgroundColor: 'rgba(255, 99, 132,0.1)',
+//         borderColor: 'rgb(255, 99, 132)',
+//     }];
+
+//     for (i = 0; i < k; i++) {
+//         if (i >= sortedCats.length) {
+//             break;
+//         }
+//         var cat = sortedCats[i];
+//         var cat_Y_axis = getOccurrencesForCategory(cat);
+//         var colorName = colorNames[config.data.datasets.length % colorNames.length];
+//         var newColor = window.chartColors[colorName];
+//         var newDataset = {
+//             label : cat,
+//             backgroundColor: newColor,
+//             borderColor: newColor,
+//             data : cat_Y_axis,
+//             lineTension: 0,
+//             fill: false
+//         };
+//         used_data_labels.push(cat);
+//         config.data.datasets.push(newDataset);
+//     }
+    
+//     if (added_field_index != "None" && !field_indexes_to_add.includes(added_field_index)) {
+//         field_indexes_to_add.push(parseInt(added_field_index));
+//     }
+//     field_indexes_to_add.sort();
+//     for (i = 0; i < field_indexes_to_add.length; i++) {
+//         index = parseInt(field_indexes_to_add[i]);
+//         if (!used_data_labels.includes(sortedCats[index])) {
+//             var cat = sortedCats[index];
+//             var cat_Y_axis = getOccurrencesForCategory(cat);
+//             var colorName = colorNames[config.data.datasets.length % colorNames.length];
+//             var newColor = window.chartColors[colorName];
+//             var newDataset = {
+//                 label : cat,
+//                 backgroundColor: newColor,
+//                 borderColor: newColor,
+//                 data : cat_Y_axis,
+//                 lineTension: 0,
+//                 fill: false
+//             };
+//             used_data_labels.push(cat);
+//             config.data.datasets.push(newDataset);
+//         }
+//     }
+//     window.chart.update();
+// }
 
 function getOccurrencesForCategory(cat) {
     var y_axis = [];
@@ -154,20 +301,24 @@ function getOccurrencesForCategory(cat) {
     return y_axis;
 }
 
-window.onload = function() {
-
+var dateGlobal;
+function drawAmplitude() {
     const urlParams = new URLSearchParams(window.location.search);
     const search_term = urlParams.get('search').toLowerCase();
     const k = urlParams.get('k');
     currentK = parseInt(k);
 
-    var database = firebase.database();
+    database.ref('/origins/' + search_term).once('value').then(function(snapshot) {
+        date = snapshot.val()['brave'];
+        document.getElementById('date-entry').innerText = 'Word Enters SF Lexicon: '.concat(date);
+
+    });
+
     database.ref('/occurrences/' + search_term).once('value').then(function(snapshot) {
         var occurrences = JSON.parse(snapshot.val()['by_year'].replaceAll("'", '"'));
         var labels = [];
         var nums = [];
         Object.keys(occurrences).sort().forEach(function(key) {
-
             labels.push(parseInt(key));
             nums.push(parseInt(occurrences[key]));
         });
@@ -183,249 +334,26 @@ window.onload = function() {
                     total_Y_axis.push(0);
                 }
         }
-    });
-    database.ref('/origins/' + search_term).once('value').then(function(snapshot) {
-        date = snapshot.val()['brave'];
-    });
-               
+
+        dateGlobal = date;
+        loadGraphAmp(search_term, parseInt(k), date);
+    });     
+
     database.ref('/fields/' + search_term).once('value').then(function(snapshot) {
-            var cat_counts = JSON.parse(snapshot.val()['total'].replaceAll("'",'"'));
-            yearlyCatData = JSON.parse(snapshot.val()['by_year'].replaceAll("'",'"'));
-        
-            // sorts the categories greatest to least on total occurrences
-            var items = Object.keys(cat_counts).map(function(key) {
-                return [key, cat_counts[key]];
-            });
-            items.sort(function(t, o) {
-                return parseInt(o[1]) - parseInt(t[1]);
-            });
-            for (i = 0; i < items.length; i++) {
-                sortedCats.push(items[i][0]);
-            }
-
-            var start_year_select = document.getElementById("start-year-select");
-            var end_year_select = document.getElementById("end-year-select");
-            for (i = min; i <= max; i++) {
-                var option = document.createElement("option");
-                option.text = i;
-                option.value = i;
-                start_year_select.add(option);
-                var option = document.createElement("option");
-                option.text = i;
-                option.value = i;
-                end_year_select.add(option);
-            }
-            $("#end-year-select").val(max);
-            var k_select = document.getElementById("k-select");
-            for (i = -1; i < Object.keys(cat_counts).length; i++) {
-                var option = document.createElement("option");
-                var j = i + 1;
-                option.text = j;
-                option.value = j;
-                k_select.add(option);
-            }
-        
-            var add_field = document.getElementById("add-field");
-            for (i = currentK; i < sortedCats.length; i++) {
-                var option = document.createElement("option");
-                option.text = sortedCats[i];
-                option.value = i;
-                add_field.add(option);
-            }
-            var option = document.createElement("option");
-            option.text = "None";
-            option.value = "None";
-            add_field.add(option);
-        
-            $("#add-field").val("None");
-            $("#k-select").val(k);
-            loadGraph(search_term, parseInt(k), date);
-    });
-
-    document.getElementById('process-button').addEventListener('click', function() {
-        var startYear = parseInt(document.getElementById("start-year-select").value);
-        var endYear = parseInt(document.getElementById("end-year-select").value);
-        var oldK = currentK;
-        currentK = parseInt(document.getElementById("k-select").value);
-        var add_field = document.getElementById("add-field")
-        var selected_field_index = add_field.options[add_field.selectedIndex].value;
-        
-        if (startYear >= endYear) {
-            startYear = min;
-            endYear = max;
-        }
-        
-        for (i = add_field.options.length - 1; i >= 0; i--) {
-            add_field.remove(i);
-        }
-        for (i = currentK; i < sortedCats.length; i++) {
-            var option = document.createElement("option");
-            option.text = sortedCats[i];
-            option.value = i;
-            add_field.add(option);
-        }
-        var option = document.createElement("option");
-        option.text = "None";
-        option.value = "None";
-        add_field.add(option);
-        $("#add-field").val("None");
-        
-        
-        if (parseInt(date) < startYear || parseInt(date) > endYear) {
-            window.myChart.config.lineAtIndex = [];
-        } else {
-            window.myChart.config.lineAtIndex = [total_X_axis.indexOf(parseInt(date)) - total_X_axis.indexOf(startYear)];
-        }
-
-        updateGraph(config.options.title.text, oldK, currentK, selected_field_index);
-
-
-
-        var start_ind = total_X_axis.indexOf(startYear);
-        var end_ind = total_X_axis.indexOf(endYear);
-
-        config.data.labels = total_X_axis.slice(start_ind, end_ind + 1);
-        config.data.datasets.forEach(function(dataset) {
-            dataset.data = dataset.data.slice(start_ind, end_ind + 1);
+        var cat_counts = JSON.parse(snapshot.val()['total'].replaceAll("'",'"'));
+        yearlyCatData = JSON.parse(snapshot.val()['by_year'].replaceAll("'",'"'));
+    
+        // sorts the categories greatest to least on total occurrences
+        var items = Object.keys(cat_counts).map(function(key) {
+            return [key, cat_counts[key]];
         });
-        window.myChart.update();
-
+        items.sort(function(t, o) {
+            return parseInt(o[1]) - parseInt(t[1]);
+        });
+        for (i = 0; i < items.length; i++) {
+            sortedCats.push(items[i][0]);
+        }
     });
 };
+$(window).on('load', () => drawAmplitude());
 
-
-
-function updateGraph(term, oldK, k, added_field_index) {
-    const chart = window.myChart;
-    let used_data_labels = [];
-    let field_indexes_to_add = [];
-    
-    for (i = chart.data.datasets.length - 1; i >= 0; i--) {
-        
-        if (i > oldK && chart.getDatasetMeta(i).hidden == true) {
-            chart.data.datasets.splice(i, 1);
-        }
-    }
-    saved_cats = chart.data.datasets.slice(oldK + 1, chart.data.datasets.length);
-    for (i = 0; i < saved_cats.length; i++) {
-        field_indexes_to_add.push(sortedCats.indexOf(saved_cats[i]['label']))
-    }
-    chart.data.datasets = [{
-        label: "Total Occurrences",
-        lineTension: 0,
-        fill: false,
-        data: total_Y_axis,
-        backgroundColor: 'rgba(255, 99, 132,0.1)',
-        borderColor: 'rgb(255, 99, 132)',
-    }];
-
-    for (i = 0; i < k; i++) {
-        if (i >= sortedCats.length) {
-            break;
-        }
-        var cat = sortedCats[i];
-        var cat_Y_axis = getOccurrencesForCategory(cat);
-        var colorName = colorNames[config.data.datasets.length % colorNames.length];
-        var newColor = window.chartColors[colorName];
-        var newDataset = {
-            label : cat,
-            backgroundColor: newColor,
-            borderColor: newColor,
-            data : cat_Y_axis,
-            lineTension: 0,
-            fill: false
-        };
-        used_data_labels.push(cat);
-        config.data.datasets.push(newDataset);
-    }
-    
-    if (added_field_index != "None" && !field_indexes_to_add.includes(added_field_index)) {
-        field_indexes_to_add.push(parseInt(added_field_index));
-    }
-    field_indexes_to_add.sort();
-    for (i = 0; i < field_indexes_to_add.length; i++) {
-        index = parseInt(field_indexes_to_add[i]);
-        if (!used_data_labels.includes(sortedCats[index])) {
-            var cat = sortedCats[index];
-            var cat_Y_axis = getOccurrencesForCategory(cat);
-            var colorName = colorNames[config.data.datasets.length % colorNames.length];
-            var newColor = window.chartColors[colorName];
-            var newDataset = {
-                label : cat,
-                backgroundColor: newColor,
-                borderColor: newColor,
-                data : cat_Y_axis,
-                lineTension: 0,
-                fill: false
-            };
-            used_data_labels.push(cat);
-            config.data.datasets.push(newDataset);
-        }
-    }
-    window.myChart.update();
-}
-
-
-$(function updateKValue () {
-    $("#end-year-select").change(function (e) {
-        var tempKArray = [];
-        kList = [];
-        Object.keys(yearlyCatData).forEach(function (key) {
-            if (parseInt(key) >= $("#start-year-select option:selected").val() && parseInt(key) <= $("#end-year-select option:selected").val()) {
-                tempKArray = (yearlyCatData[key]);
-                updatekTemp(tempKArray);
-            }
-        });
-        numK = Object.keys(kList).length;
-
-        $("#k-select").empty();
-        for (i = -1; i < numK; i++) {
-            var option = document.createElement("option");
-            option.text = i + 1;
-            option.value = i + 1;
-            $("#k-select").append(option);
-        }
-        $("#k-select option:last").attr("selected", "selected");
-
-    });
-});
-
-function updatekTemp(array) {
-    Object.keys(array).forEach(function (key) {
-        if (kList.includes(key) === false) {
-            kList.push(key);
-        }
-    });
-}
-
-$(function updateDropdown () {
-    $("#start-year-select").change(function (e) {
-        $("#end-year-select").empty();
-        var options =
-            $("#start-year-select option").filter(function(e){
-
-                return $(this).val() >= $("#start-year-select option:selected").val();
-            }).clone();
-
-        $("#end-year-select").append(options);
-
-        var tempKArray = [];
-        kList = [];
-        Object.keys(yearlyCatData).forEach(function (key) {
-            if (parseInt(key) >= $("#start-year-select option:selected").val() && parseInt(key) <= $("#end-year-select option:selected").val()) {
-                tempKArray = (yearlyCatData[key]);
-                updatekTemp(tempKArray);
-            }
-        });
-        numK = Object.keys(kList).length;
-
-        $("#k-select").empty();
-        for (i = -1; i < numK; i++) {
-            var option = document.createElement("option");
-            option.text = i + 1;
-            option.value = i + 1;
-            $("#k-select").append(option);
-        }
-        $("#k-select option:last").attr("selected", "selected");
-    });
-});

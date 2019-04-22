@@ -1,0 +1,26 @@
+html, body, main {
+    height: 100%;
+}
+
+html, body {
+    background-color: #EEEEEE;
+}
+
+main {
+    /* Offset by navbar height */
+    padding-top: 56px;
+}
+
+nav {
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.12);
+}
+
+div.navbar-nav > a.nav-item.nav-link {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+a.navbar-brand {
+    font-weight: 500;
+    font-size: 1.35rem;
+}

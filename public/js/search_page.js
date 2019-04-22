@@ -82,13 +82,6 @@ $( function() {
     });
 });
 
-
-$(function thisFunction() {
-
-    $(".search").css({"position":"absolute","top":"15%","left": "50%", "-webkit-transform":"translateX(-50%) translateY(-50%)", "transform":"translateX(-50%) translateY(-50%)"});
-
-});
-
 $(function myFunction() {
     $('.search__field').on("focus", function () {
         if (firstClick == 1) {
@@ -105,7 +98,6 @@ function validate() {
     var inpObj = (document.getElementById('myInput').value);
     var in_array = jQuery.inArray(inpObj.toLowerCase(), names);
     if (in_array == -1) {
-        alert("No Result Found");
         $('.search__field').css({"border": "2px solid red"});
         document.getElementById("alert").innerHTML = "<span class='error'>No Matching Terms Found. Please Search Again.</span>";
         return false;
