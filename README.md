@@ -20,7 +20,7 @@ This project will seek to use web scraping to parse various science databases fo
 * Out of the 700 or so terms, a select handful of them may have errors in their data. This only happens with terms with only a few occurrences throughout all of history. These faulty terms are being removed as they are found.
 * The database we are using to fetch the application data caps at 10 GB of downloads per month, after which the app will no longer work properly.
 * Sometimes the table of contents does not load. Refreshing the page once or twice solves this problem.
-
+---
 ### April 14, 2019
 ### New Software Features
 * Populated a new Firebase Database
@@ -32,7 +32,7 @@ This project will seek to use web scraping to parse various science databases fo
 ### Known bugs and defects
 * Pie chart title not showing properly
 * Pie chart update does not work when changing dates sometimes
-
+---
 ### April 8, 2019
 ### New Software Features
 * Finished scraping all data 
@@ -44,7 +44,7 @@ This project will seek to use web scraping to parse various science databases fo
 * Fixed Search bar issue (now apostrophe can be searched)
 ### Known bugs and defects
 * The database we are using has exceeded its usage limit
-
+---
 ### March 31, 2019
 ### New Software Features
 * Scripts update to include Year and Date information
@@ -53,37 +53,37 @@ This project will seek to use web scraping to parse various science databases fo
 ### Known bugs and defects
 * Currently the Search Bar becomes unresponsive when searching with special characters
 * Pie chart sometimes shows incorrect data
-
+---
 ### March 25, 2019
 ### New Software Features
 * Added Table of Contents 
-
+---
 ### March 11, 2019
 ### New Software Features
 * Implementation of fundamental Landing Page / Search Page
 * Implementation of fundamental Pie Chart / Amplitude Graph
-
+---
 ### March 4, 2019
 ### Bug Fixes
 * Back End Debugging - Now the data fit in the Database structure
-
+---
 ### February 17, 2019
 ### New Software Features
 * Database set up
 * Database population
 ### Known bugs and defects
 * Not all data fit in the Database structure
-
+---
 ### February 4, 2019
 ### New Software Features
 * Scraper has collected most of the data needed for development
-
+---
 ### January 28, 2019
 ### New Software Features
 * Pulled the word data from "Brave New Words" 
 * Aggregated data about a term from articles in "Web of Science"
 * Created a script to get word origin information from the Merriam Webster English Dictionary API
-
+---
 ## Installation Guide
 * Pre-requisites: Internet Access and a Web Browser
 * Dependent libraries that must be installed: None
