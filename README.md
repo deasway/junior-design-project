@@ -39,7 +39,8 @@ This project will seek to use web scraping to parse various science databases fo
 ### Bug Fixes
 * Fixed issues in the Pie Chart Visualization
 * Fixed Search bar issue (now apostrophe can be searched)
-* The database we are using has exceeded its limit
+### Known bugs and defects
+* The database we are using has exceeded its usage limit
 
 ### March 31, 2019
 ### New Software Features
