@@ -26,6 +26,9 @@ This project will seek to use web scraping to parse various science databases fo
 * Populated a new Firebase Database
 * Firebase Database Structure was rebuilt
 * Code was updated in accordance with the Database Structure Changes
+### Bug Fixes
+* Migrated data to a new database
+* New database is designed more efficiently in order to minimize data usage
 ### Known bugs and defects
 * Pie chart title not showing properly
 * Pie chart update does not work when changing dates sometimes
