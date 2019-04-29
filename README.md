@@ -8,10 +8,10 @@ This project will seek to use web scraping to parse various science databases fo
 
 ### April 19, 2019
 ### New Software Features
-* Firebase Database Structure Updates
-* Top K Value Dropdown Realtime Updates
-* A New Dropdown of Specific Subfield in the Amplitude Graph Page
-* Added a Pie Chart Alert - When there is no 'by-year' info
+* Firebase Database structure updates--now users only get data they need from the database instead of a dump
+* Top K Value Dropdown updates in real time 
+* Users can now add a specific subfield to the graph in both the amplitude and pie graphs
+* Added a Pie Chart Alert when there is no 'by-year' info
 * UI Beautification
 ### Bug Fixes
 * Fixed issues in the Pie Chart Title
@@ -25,29 +25,34 @@ This project will seek to use web scraping to parse various science databases fo
 ### New Software Features
 * Populated a new Firebase Database
 * Firebase Database Structure was rebuilt
-* Codes were updated in accordance with Database Structure Changes
+* Code was updated in accordance with the Database Structure Changes
+### Known bugs and defects
+* Pie chart title not showing properly
+* Pie chart update does not work when changing dates sometimes
 
 ### April 8, 2019
 ### New Software Features
-* Finished Scrapping data
-* Pie chart update with new data
-* Amplitude graph update with new data
-* Search dropdown update (End year select dropdown automatically change depending on start year select dropdown)
+* Finished scraping all data 
+* Pie chart update with new subfield data
+* Amplitude graph update with new subfield data
+* Search dropdown update (End year select option automatically changes depending on start year selection)
 ### Bug Fixes
 * Fixed issues in the Pie Chart Visualization
 * Fixed Search bar issue (now apostrophe can be searched)
+* The database we are using has exceeded its limit
 
 ### March 31, 2019
 ### New Software Features
 * Scripts update to include Year and Date information
-* Applying Year, Date information on Amplitude Graph
+* Applying Year, Date information on the Amplitude Graph
 * Front End - Search Bar Design update 
 ### Known bugs and defects
-Currently Search Bar behaves weird sometimes
+* Currently the Search Bar becomes unresponsive when searching with special characters
+* Pie chart sometimes shows incorrect data
 
 ### March 25, 2019
 ### New Software Features
-* Added Table of Content 
+* Added Table of Contents 
 
 ### March 11, 2019
 ### New Software Features
@@ -56,24 +61,24 @@ Currently Search Bar behaves weird sometimes
 
 ### March 4, 2019
 ### Bug Fixes
-* Back End Debugging - Now Data fit in the Database Structure
+* Back End Debugging - Now the data fit in the Database structure
 
 ### February 17, 2019
 ### New Software Features
 * Database set up
 * Database population
 ### Known bugs and defects
-* Not All data fit in the Database Structure
+* Not all data fit in the Database structure
 
 ### February 4, 2019
 ### New Software Features
-* Having run the scraper and scraped most of the data
+* Scraper has collected most of the data needed for development
 
 ### January 28, 2019
 ### New Software Features
-* Pull the word data from "Brave New Words" 
-* Aggregate data about a term from articles in "Web of Science"
-* The script to get dates from the Merriam Webster English Dictionary API
+* Pulled the word data from "Brave New Words" 
+* Aggregated data about a term from articles in "Web of Science"
+* Created a script to get word origin information from the Merriam Webster English Dictionary API
 
 ## Installation Guide
 * Pre-requisites: Internet Access and a Web Browser
